@@ -32,61 +32,50 @@
 <div class="container-fluid">
   <Div class="container">
       <div class="top-barr visible-xs">
-            <div class="mobile-title">
-               <div class="myIcons" > 
-                           <p  id="travellog"> Travel lo<span style="color: red;">g </span></p>
-                          <a href="#addItemModa" id = "calenderBtn" data-toggle="modal"><i class="material-icons">apps</i></a>
-                            <a href="#addItemModal" id = "addItemBtn" data-toggle="modal"><i class="material-icons">&#xE147;</i></a>
-                </div>
+         
       
       
-      
-           </div>
-      
-      
-      </div>
+      </div> <!--------- topdar End----------------------------->
 
     
         
     
 
-      <div class="topdar hidden-xs">
+      <div class="topdar hidden-xs1">
         
 
        
          
             
 
-                
-                  <h2 id="siteNameBig" ><b>Travel lo<span style="color: red;">g</span> </b></h2> 
-              
+        <h2 id="siteNameBig" ><b>Travel lo<span style="color: red;">g</span> </b></h2> 
 
-                
-                  <a href="#addItemModal" class="btn btn-success addItem" id = "addItemBtn2" data-toggle="modal">
-                     <span>Add</span> </a>
-                
-
-              
-
-             
-              
-
-              
-            
-          
-
+        <div class="yearSelector">  <h1 id="prev" title="Change Year-">«&#10094</h1> <h1 id="yearSelect">2000</h1 > <h1 id="next" title="Change Year+">&#10095;»</h1>
         
+        </div>
+        <div class= "yearSelector">
+          <select  id="monthSelect" title="Select Month" onchange="monthChanged()">
+           <option value="1"> January</option>
+           <option value="2">February</option>
+           <option value="3">March</option>
+           <option value="4">April</option>
+           <option value="5">May</option>
+           <option value="6"> June</option>
+           <option value="7">July</option>
+           <option value="8">August</option>
+           <option value="9">September</option>
+           <option value="10">October</option>
+           <option value="11">November</option>
+           <option value="12">December</option>
+         </select>
+        </div>
         
-      </div>
+        <a href="#myModal"  id = "calenderBtn" data-toggle="modal"><i class="fa fa-2x fa-calendar" ></i></a>
+       <a href="#addItemModal" id = "addItemBtn" data-toggle="modal"><i class="material-icons" title="Add Toor Details">&#xE147;</i></a>
+  </div><!--------topdar hidder xs end------------------------------------------------------------------------>
 
 
 
-        
-          
-
-              <!--<a href="#addItemModal" class="btn btn-success addItem" id = "addItemBtn" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add</span></a>-->
-                          
-             
 
   <div class="tableContainer">
         <table id = "itemTable"class="table table-striped table-hover">
@@ -102,13 +91,17 @@
               <th>Km</th>
               <th>Purpose</th>
               <th>Actions</th>
+              
+              
+          
+             
             </tr>
           </thead>
           <tbody>
           </tbody>
           </table>
         
-    </div></Div>
+    </div></Div><!------container ---End------------------------------------>>
     <!--</div> -->       
     <!--</div>-->
   <!-- Edit Modal HTML -------------------------------------------------->
@@ -121,38 +114,55 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
           <!-- starting  inputs-->
-<div class="modal-body">          
+<div   class="modal-body">          
               
    <div class="form-group">
+    
+    <div id="dateModeKm">
+            <div>
                <label>Date</label>
               <input type="number" min="1" max="31"id = "date" class="form-control" required>
-      
-                <label>Month</label>
-                 <input type="text" id = "month" class="form-control" required>
-      
-               <label>Year</label>
-                <input type="text" id = "year" class="form-control" required>          
-                <label>TimeA</label>
-                <input type="text" id = "timea" class="form-control">
-               <label>TimeB</label>
-               <input type="text" id="timeb" class="form-control">
+            </div>
 
+            <div id="divKm">
+              <label>KM</label>
+              <input autocomplete="off" type="number" id = "km" class="form-control">
+              </div>
+
+              <div id="divMode">
+              <label>Mode</label>
+              <input autocomplete="off" type="text" id="mode" class="form-control">
+              </div>
+    </div>   
+                        
+        <div id="timeAB">
+                   <div>
+                    <label>Start Time</label>
+                    <input autocomplete="off" type="text" id = "timea" class="form-control">
+
+                      </div>
+                    
+                    <div id="endTime">
+                    <label>End Time</label>
+                      <input autocomplete="off" type="text" id="timeb" class="form-control">
+                    </div>
+        </div>
+               
                     <label>From</label>
-                     <input type="text" id = "from" class="form-control">
+                     <input autocomplete="off"type="text" id = "from" class="form-control">
 
                       <label>To</label>
-                      <input type="text" id="to" class="form-control">
+                      <input autocomplete="off" type="text" id="to" class="form-control">
     
               <label>Purpose</label>
-              <input type="text" id = "purpose" class="form-control">
+              <input  autocomplete="off" type="text" id = "purpose" class="form-control">
 
-                <label>KM</label>
-                <input type="number" id = "km" class="form-control">
 
-                <label>Mode of journey</label>
-                <input type="text" id="mode" class="form-control">
-                
-    </div>
+               
+  
+         
+  
+            </div>
 
              
             </div> 
@@ -171,7 +181,7 @@
       </div>
     </div>
   </div>
-  </div>
+  </div> <!----container fluid End---------------------------->
   
   <!-- -----------------------------Edit Modal HTML ---------------------------------------------------------------------->
   <div id="editItemModal" class="modal fade">
@@ -187,74 +197,69 @@
        
     
 
-           <div class="form-group">
+      <div id="editDateModeKmDiv">
                 
-            <div class ="my-20">
+            <div >
                  <label>Date</label>
                   <input type="number" min="1" max="31"id = "editdate" class="form-control" required>
             </div>
     
-            <div class ="my-40">
-                    <label>Month</label>
-                     <input type="text" id = "editmonth" class="form-control" required>
+            <div id="editKmDiv">
+              <label>KM</label>
+              <input type="number" id = "editkm" class="form-control">
             </div>
-    
-            <div class= "my-40">
-                   <label>Year</label>
-                  <input type="text" id = "edityear" class="form-control" required>
-            </div>
-                
-      </div>
+            
+            <div id="editModeDiv"> 
+              <label>Mode</label>
+              <input type="text" id="editmode" class="form-control">
+              
+            </div>   
+  </div>
                
-      <div class="form-group">
-                     
-                      <div class="my-fifty">
-                            <label>TimeA</label>
+      
+          <div id="editTimeAB">
+                      <div>
+                            <label>Start Time</label>
                             <input type="text" id = "edittimea" class="form-control">
                       </div>
                   
-                      <div class="my-fifty"> 
-                           <label>TimeB</label>
+                      <div id="editEndTimeDiv"> 
+                           <label>End Time</label>
                            <input type="text" id="edittimeb" class="form-control">
                      
                           </div>
-                </div>
+
+                          
+          </div>
+
+                
     
-                <div class="form-group">
+                
                   
-                    <div class="my-fifty">
+                    
                         <label>From</label>
                          <input type="text" id = "editfrom" class="form-control">
-                   </div>
                   
-                    <div class="my-fifty"> 
+                  
+                   
                           <label>To</label>
                           <input type="text" id="editto" class="form-control">
-                    </div>
+                    
                
-                  </div>
+                 
     
-                <div class="form-group">
+            
                   <label>Purpose</label>
                   <input type="text" id = "editpurpose" class="form-control">
-                </div>        
+                      
              
     
-                <div class="form-group">
+                
     
-                  <div class="my-fifty">
-                    <label>KM</label>
-                    <input type="number" id = "editkm" class="form-control">
-                  </div>
                   
-                  <div class="my-fifty"> 
-                    <label>Mode of journey</label>
-                    <input type="text" id="editmode" class="form-control">
-                    
-                  </div>
     
                  
-                </div> 
+               
 
           </div>
 
@@ -291,7 +296,7 @@
       </div>
     </div>
   </div>
-  <div class="modal1"></div>
+  <div class="modal1">           </div>
 
 
   <script type="text/javascript" src="crud.js"></script>
