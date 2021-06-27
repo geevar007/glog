@@ -215,7 +215,7 @@ m++;
        var date = tds[1].innerHTML;
        
        
-       $('#deleteno').html(date+month+year);
+       $('#deleteno').html(no);
        $('#deletedate').html("Travel Details");
        $('#deleteItemModal').modal('show');
       
