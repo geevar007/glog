@@ -8,8 +8,17 @@ var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyv
 
   
   $(document).ready(function(){  
+ 
+  var gx= new Date();
   
-  
+  var m = gx.getMonth();
+
+var y= gx.getFullYear();
+
+m++;
+
+    $("#monthSelect").val(m);
+    $("#yearSelect").html(y);
   /*-------------------------------------------------- Add Item Operation --------------------------------------------*/
    $("#addItemform").submit(function(event) {
       event.preventDefault();
@@ -22,8 +31,8 @@ var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyv
       var purpose = $("#purpose").val();
       var km = $("#km").val();
       var mode = $("#mode").val();
-      var month = $("#month").val();
-      var year = $("#year").val();
+      var month =$( "#monthSelect option:selected" ).text();
+      var year = $("#yearSelect").text();
 
       //alert(itemName);
       $('#addItemModal').modal('toggle');
@@ -52,12 +61,14 @@ var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyv
     });
   });
   
-  /* End Of Add Item Operation */
+  /* ------------------------------------End Of Add Item Operation----------------------------------------------------- */
   
   /* --------------------------------------------------Read Operation ------------------------------------------*/
   $body = $("body");
   $body.addClass("loading"); 
-    jQuery.get(url+"?action=getItems", function(data, status){
+  var month =$( "#monthSelect option:selected" ).text();
+  var year = $("#yearSelect").text();
+    jQuery.get(url+"?action=getItems&month="+month+"&year="+year, function(data, status){
     
 
     if(data.tableEmpty == 'N'){  
@@ -75,10 +86,12 @@ var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyv
               "<td>"+item.to+"</td>"+
               "<td>"+item.mode+"</td>"+
               "<td>"+item.km+"</td>"+
-              "<td>"+item.purpose+"</td>"+
+              '<td >'+item.purpose+"</td>"+
               "<td>"+
                  '<a href = "" class="editItem" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">edit</i></a>'+
                  '<a href = "" class="deleteItem" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'+
+              
+              
 
               "</td>"+
             "</tr>").appendTo('#itemTable');
@@ -148,7 +161,8 @@ var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyv
       var mode  = $("#editmode").val();
       var km = $("#editkm").val();
       var purpose = $("#editpurpose").val();
-
+      var month =$( "#monthSelect option:selected" ).text();
+      var year = $("#yearSelect").text();
      
 
     //  alert(itemName);
@@ -171,6 +185,8 @@ var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyv
         mode:mode,
         km:km,
         purpose:purpose,
+        month:month,
+        year:year,
       },
       function(data1,status1){
         
@@ -199,8 +215,8 @@ var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyv
        var date = tds[1].innerHTML;
        
        
-       $('#deleteno').html(no);
-       $('#deletedate').html(date);
+       $('#deleteno').html(date+month+year);
+       $('#deletedate').html("Travel Details");
        $('#deleteItemModal').modal('show');
       
   
@@ -235,6 +251,28 @@ var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyv
   
   /*-------------------------------------- End Delete operation -----------------------------------------*/
   
+  $(document).on('click', '#prev', function(){ 
+
+
+    year--;
+$("#yearSelect").html(year);
+
+  })
+
+  $(document).on('click', '#next', function(){ 
+
+
+    year++;
+$("#yearSelect").html(year);
+
+  })
+
+
+
+
+
+
+
   
 });
 
