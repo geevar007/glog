@@ -408,5 +408,5 @@ margin: 0px 0px 0px 0px;
 }
 #timeAB, #dateModeKm, #editTimeAB,#editDateModeKmDiv {
     display: flex;
-    flex-direction: row;
+    flex-direction:row;
 }
