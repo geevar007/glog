@@ -288,9 +288,12 @@ h1,h2,h3,.tableContainer{
     cursor: context-menu;
 }
 #monthSelect{
- background-color: #38b9a3;
+ background-color: #035879;
  color: rgb(253, 253, 253);
     font-size: large;
+    border:none;
+   
+    
 }
 .myIcons{
     
@@ -306,49 +309,46 @@ h1,h2,h3,.tableContainer{
 .topdar{background:rgb(3 88 121) none repeat scroll 0 0;
 
 width:100%;
-height: 55px;
-margin-top:25px;
 
+margin-top:25px;
+padding:4px 30px 0px 30px;
+display: flex;
+flex-direction: row;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: center;
 
 }
    
-#addItemBtn{
-    right: 48px;
+#addItemBtn, #calenderBtn{
+   
     color: white;
-    position: fixed;
-    top: 4px;
+    margin: 0px 10px 0px 10px;
+    
 }
 #travellog{
     font-size: 16pt;
 }
-#calenderBtn{
-    color: white;
-    right: 75px;
-    
-    position: fixed;
-    top: 4px;
-}
+
 #addItemBtn2{
-    right: 142px;
+    
     color: white;
-    position: fixed;
-    top: 36px;
+    
+    
     background-color: #677693;
     border-color: #286090;
     border-radius: 13px;
 }
-#addItemBtn2:hover{
-    background-color: #6e59e2;
-}
+
 
 
 
 #siteNameBig{
 
-    left:68px;
-    color: white;
-    position: relative;
-    top: 8px;
+    
+      color: white;
+    
+ 
     font-size: 38px;
 
 }
@@ -358,4 +358,55 @@ margin-top:25px;
     background-color: #deedfb;
     border-radius: 24px;
    
+}
+
+.yearSelector h1{
+    float: left;
+    color:white;
+    font-size:15pt;
+    margin: 0 0 0 0;
+    margin:0px 17px 0px 16px;
+}
+#prev:hover,#next:hover,  #addItemBtn:hover, #calenderBtn:hover, #monthSelect:hover{
+    color:red;
+   
+    cursor: pointer;
+
+}
+#monthSelect:focus-visible{
+ 
+    outline: none;
+}
+#prev:active,#next:active,  #addItemBtn:active, #calenderBtn:active, #monthSelect:active{
+    color:royalblue;
+}
+.myFootDiv{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-around;
+    align-items: center;
+}
+label{
+margin:7px 0px 0px 0px;
+}
+#date, #editdate{
+width:68Px;
+}
+#month{
+    width:90px;
+}
+#divKm, #divMode,#endTime,#editModeDiv,#editKmDiv,#editEndTimeDiv {
+   
+    margin: 0px 0px 0px 5px;
+}
+#timea,#timeb{
+margin: 0px 0px 0px 0px;
+
+
+}
+#timeAB, #dateModeKm, #editTimeAB,#editDateModeKmDiv {
+    display: flex;
+    flex-direction: row;
 }
