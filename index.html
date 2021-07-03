@@ -29,55 +29,78 @@
 
   </head>
   <body ng-app="app">
-<div class="container-fluid">
+
+    <div >
+      <div  class="siteName"><h2   ><b>Travel lo<span style="color: red;">g</span> </b></h2> </div>
+    <div class="mBanner sticky">
+      
+      <div class="yearSelector">  <h4 id="prev" title="Change Year-">«&#10094</h4> <h4 id="yearSelect">2000</h4 > <h4 id="next" title="Change Year+">&#10095;»</h4>
+      </div>
+      
+      <div class= "monthSelector">
+        <select  id="monthSelect" title="Select Month">
+         <option value="1">January</option>
+         <option value="2">February</option>
+         <option value="3">March</option>
+         <option value="4">April</option>
+         <option value="5">May</option>
+         <option value="6">June</option>
+         <option value="7">July</option>
+         <option value="8">August</option>
+         <option value="9">September</option>
+         <option value="10">October</option>
+         <option value="11">November</option>
+         <option value="12">December</option>
+       </select>
+      </div>
+      
+      <i href="#addItemModal" id = "maddItemBtn" data-toggle="modal" class="fa fa-calendar-plus-o fa-2x" aria-hidden="true"></i>
+    </div>
+  
+  
+
+
+    <!--------- mobile banner End----------------------------->
+    
+    <div id="mobileViewArea"class="visible-xs"></div>
+  </div>
+
+    <div class="container-fluid">
   <Div class="container">
-      <div class="top-barr visible-xs">
-         
-      
-      
-      </div> <!--------- topdar End----------------------------->
-
-    
-        
+     
     
 
-      <div class="topdar hidden-xs1">
-        
 
-       
-         
+
+
+
+
+
+
+
+  
+
+ 
             
-
-        <h2 id="siteNameBig" ><b>Travel lo<span style="color: red;">g</span> </b></h2> 
-
-        <div class="yearSelector">  <h1 id="prev" title="Change Year-">«&#10094</h1> <h1 id="yearSelect">2000</h1 > <h1 id="next" title="Change Year+">&#10095;»</h1>
-        
-        </div>
-        <div class= "yearSelector">
-          <select  id="monthSelect" title="Select Month" onchange="monthChanged()">
-           <option value="1"> January</option>
-           <option value="2">February</option>
-           <option value="3">March</option>
-           <option value="4">April</option>
-           <option value="5">May</option>
-           <option value="6"> June</option>
-           <option value="7">July</option>
-           <option value="8">August</option>
-           <option value="9">September</option>
-           <option value="10">October</option>
-           <option value="11">November</option>
-           <option value="12">December</option>
-         </select>
-        </div>
-        
-        <a href="#myModal"  id = "calenderBtn" data-toggle="modal"><i class="fa fa-2x fa-calendar" ></i></a>
-       <a href="#addItemModal" id = "addItemBtn" data-toggle="modal"><i class="material-icons" title="Add Toor Details">&#xE147;</i></a>
-  </div><!--------topdar hidder xs end------------------------------------------------------------------------>
+    
+  
+ 
 
 
 
 
-  <div class="tableContainer">
+
+
+
+
+
+
+
+
+
+
+
+  <div class="tableContainer hidden-xs">
         <table id = "itemTable"class="table table-striped table-hover">
           <thead>
             <tr>
@@ -101,7 +124,13 @@
           </tbody>
           </table>
         
-    </div></Div><!------container ---End------------------------------------>>
+    </div><!------table container End--------------------->
+
+
+ 
+
+
+  </Div><!------container ---End------------------------------------>
     <!--</div> -->       
     <!--</div>-->
   <!-- Edit Modal HTML -------------------------------------------------->
@@ -130,8 +159,10 @@
               </div>
 
               <div id="divMode">
-              <label>Mode</label>
-              <input autocomplete="off" type="text" id="mode" class="form-control">
+             
+              <input type="checkbox" id="mode" name="vehicle1" >
+  <label for="vehicle1">Bus</label><br>
+             <!-- <input autocomplete="off" type="text" id="mode" class="form-control">-->
               </div>
     </div>   
                         
@@ -176,7 +207,7 @@
           <div class="modal-footer">
             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
             <input type="submit" id ="btn_add_item" class="btn btn-success" value="Add">
-          
+          </div>
         </form>
       </div>
     </div>
@@ -282,9 +313,9 @@
             <h4 class="modal-title">Delete Item</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           </div>
-          <div class="modal-body">          
+         <div class="modal-body">          
             <p>Are your sure to delete?</p>
-            <p id = "deleteno"></p>
+           <p>Entry No:</p> <p id = "deleteno"></p>
             <p id = "deletedate"></p>
            
           </div>
@@ -296,35 +327,8 @@
       </div>
     </div>
   </div>
-  <div class="modal1">           </div>
-
-
-  <script type="text/javascript" src="crud.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-      
-
-
-
-      
- 
-
-
-
-
+  <div class="modal1">          </div>
+<script type="text/javascript" src="crud.js"></script>
 
 
 <footer class="footer">
