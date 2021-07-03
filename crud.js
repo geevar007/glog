@@ -6,19 +6,20 @@
 
 var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyvcep18qZhjHFPOE6MHgLSo/exec";
 
+var gx= new Date();
   
-  $(document).ready(function(){  
- 
-  var gx= new Date();
-  
-  var m = gx.getMonth();
+var m = gx.getMonth();
 
 var y= gx.getFullYear();
 
 m++;
 
-    $("#monthSelect").val(m);
-    $("#yearSelect").html(y);
+  $("#monthSelect").val(m);
+  $("#yearSelect").html(y);
+ 
+  $(document).ready(function(){  
+ 
+  
   /*-------------------------------------------------- Add Item Operation --------------------------------------------*/
    $("#addItemform").submit(function(event) {
       event.preventDefault();
@@ -30,9 +31,11 @@ m++;
       var to = $("#to").val();
       var purpose = $("#purpose").val();
       var km = $("#km").val();
-      var mode = $("#mode").val();
-      var month =$( "#monthSelect option:selected" ).text();
-      var year = $("#yearSelect").text();
+      var month=$( "#monthSelect option:selected" ).text();
+      var year= $("#yearSelect").text();
+      if ($('#mode').is(":checked")){var mode="Bus"}
+    else{var mode="Dept:Jeep"}
+     
 
       //alert(itemName);
       $('#addItemModal').modal('toggle');
@@ -56,7 +59,7 @@ m++;
       function(data,status){
         //alert("Data: " + data + "\nStatus: " + status);
         $body.removeClass("loading");
-        location.reload();
+       gRefresh();
       
     });
   });
@@ -64,52 +67,110 @@ m++;
   /* ------------------------------------End Of Add Item Operation----------------------------------------------------- */
   
   /* --------------------------------------------------Read Operation ------------------------------------------*/
-  $body = $("body");
-  $body.addClass("loading"); 
-  var month =$( "#monthSelect option:selected" ).text();
-  var year = $("#yearSelect").text();
-    jQuery.get(url+"?action=getItems&month="+month+"&year="+year, function(data, status){
-    
-
-    if(data.tableEmpty == 'N'){  
-    var response = data.items;
-    $(function () {
-    $.each(response, function (i, item) { 
-            $(
-              "<tr>"+
-              
-              "<td>"+item.no+"</td>"+
-              "<td>"+item.date+"</td>"+
-              "<td>"+item.timea+"</td>"+
-              "<td>"+item.timeb+"</td>"+
-              "<td>"+item.from+"</td>"+
-              "<td>"+item.to+"</td>"+
-              "<td>"+item.mode+"</td>"+
-              "<td>"+item.km+"</td>"+
-              '<td >'+item.purpose+"</td>"+
-              "<td>"+
-                 '<a href = "" class="editItem" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">edit</i></a>'+
-                 '<a href = "" class="deleteItem" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'+
-              
-              
-
-              "</td>"+
-            "</tr>").appendTo('#itemTable');
-          
-          });
-      });
-
-    $body.removeClass("loading");
-    }
-    else{
-     
-    $body.removeClass("loading"); 
-
-    }
-  });
   
+
+
+
+  gRefresh();
+
+
+
+
+
+
+
+
+
+
 /*----------------- End of Read Operation */  
   
+
+//mobile edit press ---------------------
+
+
+
+
+$(document).on('click', '.meditItem', function(){  
+
+
+  var tds = $(this).closest('div').children('p');
+  //alert(tds[0].innerHTML) 
+  
+  var no  = tds[0].innerHTML;
+  var date = tds[1].innerHTML;
+  var timea = tds[2].innerHTML; 
+  var timeb= tds[3].innerHTML; 
+  var from  = tds[4].innerHTML;
+  var to = tds[5].innerHTML;
+  var mode = tds[7].innerHTML; 
+  var km= tds[8].innerHTML;
+  var purpose= tds[6].innerHTML;
+  
+
+  $('#no').val(no);
+  $('#editdate').val(date);
+  $('#edittimea').val(timea);
+  $('#edittimeb').val(timeb);
+  $('#editfrom').val(from);
+  $('#editto').val(to);
+  $('#editmode').val(mode);
+  $('#editkm').val(km);
+  $('#editpurpose').val(purpose);
+
+
+  $('#editItemModal').modal('show');
+
+
+
+
+});
+
+
+//------------------------------------------------------------------------------------------------
+
+$(document).on('click', '.mdeleteItem', function(){  
+           
+
+
+    var tds = $(this).closest('div').children('p');
+
+     
+     var no  = tds[0].innerHTML;
+     //var date = tds[1].innerHTML;
+     
+     
+     $('#deleteno').html(no);
+     
+     $('#deleteItemModal').modal('show');
+    
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   /* ---------------------------------------------- Edit / Update operationb -----------------------------------*/ 
 
@@ -193,7 +254,8 @@ m++;
       $body.removeClass("loading");
      // alert("Data: " + data1 + "\nStatus: " + status1); 
 
-        location.reload();
+       // location.reload();
+       gRefresh();
     });
   });
 
@@ -227,7 +289,9 @@ m++;
                event.preventDefault();
       
       var no = $("#deleteno").html();
-     
+      
+      var month =$( "#monthSelect option:selected" ).text();
+  
 
     //  alert(itemName);
 
@@ -238,13 +302,15 @@ m++;
       {
         action: "deleteItem",
         no:no,
+        month:month,
+       
        
       },
       function(data1,status1){
        $body.removeClass("loading");
         //alert("Data: " + data1 + "\nStatus: " + status1);
-        
-        location.reload();
+        gRefresh();
+        //location.reload();
     });
   });
   
@@ -254,24 +320,133 @@ m++;
   $(document).on('click', '#prev', function(){ 
 
 
-    year--;
-$("#yearSelect").html(year);
+    y--;
+$("#yearSelect").html(y);
+
 
   })
 
   $(document).on('click', '#next', function(){ 
 
 
-    year++;
-$("#yearSelect").html(year);
+    y++;
+$("#yearSelect").html(y);
 
   })
 
 
+function gRefresh()
+{ 
+ 
+  $( "#mobileViewArea" ).load(window.location.href + " #mobileViewArea" );
+  $( "#itemTable" ).load(window.location.href + " #itemTable" );
+  var month =$( "#monthSelect option:selected" ).text();
+  var year = $("#yearSelect").text();
+
+  $body = $("body");
+  $body.addClass("loading"); 
+  
+    jQuery.get(url+"?action=getItems&month="+month+"&year="+year, function(data, status){
+    
+
+    if(data.tableEmpty == 'N'){  
+    var response = data.items;
+    $(function () {
+    $.each(response, function (i, item) { 
+            $(
+              "<tr>"+
+              
+              "<td>"+item.no+"</td>"+
+              "<td>"+item.date+"</td>"+
+              "<td>"+item.timea+"</td>"+
+              "<td>"+item.timeb+"</td>"+
+              "<td>"+item.from+"</td>"+
+              "<td>"+item.to+"</td>"+
+              "<td>"+item.mode+"</td>"+
+              "<td>"+item.km+"</td>"+
+              '<td >'+item.purpose+"</td>"+
+              "<td>"+
+                 '<a href = "" class="editItem" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">edit</i></a>'+
+                 '<a href = "" class="deleteItem" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'+
+              
+              
+
+              "</td>"+
+            "</tr>").appendTo('#itemTable');
+          
+          });
+
+
+
+          $.each(response, function (i, item) { 
+            $(
+              
+
+
+'<div class="mySlip"><div id="dDate">'+
+        '<p id="pMonth">'+item.month+'</p><h2>'+item.date+'</h2><p id="pYear">'+item.year+'</p></div>'+
+   
+
+
+        '<div class=dData>'+                       
+        '<p><b>Time:</b> '+item.timea+' <b>to:</b> '+item.timeb+'</p>'+
+        '<p><b>From: </b>'+item.from+' <b>To:</b> '+item.to+'</p>'+
+         '<p><b>Purpose: </b>'+item.purpose+'</p>'+
+         '<p><b>KM: </b>'+item.km+', <b>Mode: </b>'+item.mode+'</p></div>'+
+        
 
 
 
 
+
+
+    '</div>'+
+
+ '<div class="dfoot">'+
+ '<P >'+item.no+'</p>'+
+ '<p hidden>'+item.date+'</p>'+
+ '<p hidden>'+item.timea+'</p>'+
+ '<p hidden>'+item.timeb+'</p>'+
+ '<p hidden>'+item.from+'</p>'+
+ '<p hidden>'+item.to+'</p>'+
+ '<p hidden>'+item.purpose+'</p>'+
+ '<p hidden>'+item.mode+'</p>'+
+ '<p hidden>'+item.km+'</p>'+
+ '<a href = "" class="meditItem" data-toggle="modal"><i class="material-icons mEditbtn" data-toggle="tooltip" title="Edit">edit</i></a>'+
+                 '<a href = "" class="mdeleteItem" data-toggle="modal"><i class="material-icons mDeletebtn" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'+
+
+
+
+'</div>'
+  ).appendTo('#mobileViewArea')});
+
+ });
+
+
+
+
+    $body.removeClass("loading");
+    }
+    else{
+     
+    $body.removeClass("loading"); 
+
+    }
+  });
+  
+  
+  
+  
+ 
+}
+
+
+$("#monthSelect").change(function(){
+  var month =$( "#monthSelect option:selected" ).text();
+  
+  alert("view entries in "+month+" only");
+ gRefresh();
+});
 
   
 });
