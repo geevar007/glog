@@ -19,7 +19,7 @@ m++;
  
   $(document).ready(function(){  
  
-  
+
   /*-------------------------------------------------- Add Item Operation --------------------------------------------*/
    $("#addItemform").submit(function(event) {
       event.preventDefault();
@@ -48,8 +48,8 @@ m++;
         date:date,
         month:month,
         year:year,
-        timea:timea,
-        timeb:timeb,
+        timea:timea+" to "+timeb,
+        
         from:from,
         to:to,
         mode:mode,
@@ -85,7 +85,7 @@ m++;
 /*----------------- End of Read Operation */  
   
 
-//mobile edit press ---------------------
+//---------------------------------------------------------mobile edit press ---------------------
 
 
 
@@ -98,13 +98,15 @@ $(document).on('click', '.meditItem', function(){
   
   var no  = tds[0].innerHTML;
   var date = tds[1].innerHTML;
-  var timea = tds[2].innerHTML; 
-  var timeb= tds[3].innerHTML; 
-  var from  = tds[4].innerHTML;
-  var to = tds[5].innerHTML;
-  var mode = tds[7].innerHTML; 
-  var km= tds[8].innerHTML;
-  var purpose= tds[6].innerHTML;
+ var timeatoB = tds[2].innerHTML; 
+ var x= timeatoB.split(" to ");
+var timea= x[0];
+ var timeb= x[1];
+  var from  = tds[3].innerHTML;
+  var to = tds[4].innerHTML;
+  var mode = tds[6].innerHTML; 
+  var km= tds[7].innerHTML;
+  var purpose= tds[5].innerHTML;
   
 
   $('#no').val(no);
@@ -113,10 +115,11 @@ $(document).on('click', '.meditItem', function(){
   $('#edittimeb').val(timeb);
   $('#editfrom').val(from);
   $('#editto').val(to);
-  $('#editmode').val(mode);
+  
   $('#editkm').val(km);
   $('#editpurpose').val(purpose);
-
+  if (mode=="Bus"){$('#eMode').prop('checked', true);}
+  else { $('#eMode').prop('checked', false);};
 
   $('#editItemModal').modal('show');
 
@@ -126,7 +129,7 @@ $(document).on('click', '.meditItem', function(){
 });
 
 
-//------------------------------------------------------------------------------------------------
+//----------------------------------------------mDelltec starts--------------------------------------------------
 
 $(document).on('click', '.mdeleteItem', function(){  
            
@@ -182,13 +185,15 @@ $(document).on('click', '.mdeleteItem', function(){
        
        var no  = tds[0].innerHTML;
        var date = tds[1].innerHTML;
-       var timea = tds[2].innerHTML; 
-       var timeb= tds[3].innerHTML; 
-       var from  = tds[4].innerHTML;
-       var to = tds[5].innerHTML;
-       var mode = tds[6].innerHTML; 
-       var km= tds[7].innerHTML;
-       var purpose= tds[8].innerHTML;
+       var timeatoB = tds[2].innerHTML; 
+       var x= timeatoB.split(" to ");
+      var timea= x[0];
+       var timeb= x[1];
+       var from  = tds[3].innerHTML;
+       var to = tds[4].innerHTML;
+       var mode = tds[5].innerHTML; 
+       var km= tds[6].innerHTML;
+       var purpose= tds[7].innerHTML;
        
 
        $('#no').val(no);
@@ -197,11 +202,11 @@ $(document).on('click', '.mdeleteItem', function(){
        $('#edittimeb').val(timeb);
        $('#editfrom').val(from);
        $('#editto').val(to);
-       $('#editmode').val(mode);
+      
        $('#editkm').val(km);
        $('#editpurpose').val(purpose);
-       
-       
+       if (mode=="Bus"){$('#eMode').prop('checked', true);}
+       else { $('#eMode').prop('checked', false);};
 
        $('#editItemModal').modal('show');
       
@@ -219,12 +224,15 @@ $(document).on('click', '.mdeleteItem', function(){
       var timeb = $("#edittimeb").val();
       var from = $("#editfrom").val();
       var to = $("#editto").val();
-      var mode  = $("#editmode").val();
+      
       var km = $("#editkm").val();
       var purpose = $("#editpurpose").val();
       var month =$( "#monthSelect option:selected" ).text();
       var year = $("#yearSelect").text();
-     
+      if ($('#eMode').is(":checked")){var mode="Bus"}
+    else{var mode="Dept:Jeep"}
+
+
 
     //  alert(itemName);
 
@@ -239,8 +247,8 @@ $(document).on('click', '.mdeleteItem', function(){
         date:date,
        // month:month,
        // year:year,
-        timea:timea,
-        timeb:timeb,
+        timea:timea+" to "+timeb,
+       
         from:from,
         to:to,
         mode:mode,
@@ -322,7 +330,7 @@ $(document).on('click', '.mdeleteItem', function(){
 
     y--;
 $("#yearSelect").html(y);
-
+gRefresh();
 
   })
 
@@ -331,12 +339,15 @@ $("#yearSelect").html(y);
 
     y++;
 $("#yearSelect").html(y);
-
+gRefresh();
   })
 
 
 function gRefresh()
-{ 
+{   $("#disMonth").html($( "#monthSelect option:selected" ).text());
+$("#disYear").html($("#yearSelect").text());
+$("#edisMonth").html($( "#monthSelect option:selected" ).text());
+$("#edisYear").html($("#yearSelect").text());
  
   $( "#mobileViewArea" ).load(window.location.href + " #mobileViewArea" );
   $( "#itemTable" ).load(window.location.href + " #itemTable" );
@@ -359,8 +370,7 @@ function gRefresh()
               "<td>"+item.no+"</td>"+
               "<td>"+item.date+"</td>"+
               "<td>"+item.timea+"</td>"+
-              "<td>"+item.timeb+"</td>"+
-              "<td>"+item.from+"</td>"+
+             "<td>"+item.from+"</td>"+
               "<td>"+item.to+"</td>"+
               "<td>"+item.mode+"</td>"+
               "<td>"+item.km+"</td>"+
@@ -374,22 +384,17 @@ function gRefresh()
               "</td>"+
             "</tr>").appendTo('#itemTable');
           
-          });
+          var timeMix=item.timea;
+var x =timeMix.split(" to ");
 
-
-
-          $.each(response, function (i, item) { 
             $(
-              
-
-
 '<div class="mySlip"><div id="dDate">'+
         '<p id="pMonth">'+item.month+'</p><h2>'+item.date+'</h2><p id="pYear">'+item.year+'</p></div>'+
    
 
 
         '<div class=dData>'+                       
-        '<p><b>Time:</b> '+item.timea+' <b>to:</b> '+item.timeb+'</p>'+
+        '<p><b>Time:</b> '+x[0]+' <b>to:</b> '+x[1]+'</p>'+
         '<p><b>From: </b>'+item.from+' <b>To:</b> '+item.to+'</p>'+
          '<p><b>Purpose: </b>'+item.purpose+'</p>'+
          '<p><b>KM: </b>'+item.km+', <b>Mode: </b>'+item.mode+'</p></div>'+
@@ -406,7 +411,7 @@ function gRefresh()
  '<P >'+item.no+'</p>'+
  '<p hidden>'+item.date+'</p>'+
  '<p hidden>'+item.timea+'</p>'+
- '<p hidden>'+item.timeb+'</p>'+
+ 
  '<p hidden>'+item.from+'</p>'+
  '<p hidden>'+item.to+'</p>'+
  '<p hidden>'+item.purpose+'</p>'+
@@ -451,4 +456,11 @@ $("#monthSelect").change(function(){
   
 });
 
+$("#fromI").click(function(){
+$('#from').val("Thrissur HQ");});
 
+$("#toI").click(function(){
+  $('#to').val("Thrissur HQ");});
+
+  $("#purI").click(function(){
+    $('#purpose').val("Assisting SSO for");});
