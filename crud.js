@@ -12,6 +12,7 @@ var m = gx.getMonth();
 
 var y= gx.getFullYear();
 
+
 m++;
 
   $("#monthSelect").val(m);
@@ -19,6 +20,38 @@ m++;
  
   $(document).ready(function(){  
  
+
+
+    $("#btn_add_dates").click(function(){
+
+      var dates =$("#monitor").val();
+      var month=$( "#monthSelect option:selected" ).text();
+      var year= $("#yearSelect").text();
+if(dates==""){alert("Nothing to add")}
+
+else{
+  $('#myCalender').modal('toggle');
+  $body.addClass("loading"); 
+  $("#monitor").val("");
+  $.post(url,
+    {
+      action: "multiDate",
+      dates:dates,
+      month:month,
+      year:year,
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+      $body.removeClass("loading");
+     gRefresh();
+    
+  });
+}
+    })
+
+
+
+
 
   /*-------------------------------------------------- Add Item Operation --------------------------------------------*/
    $("#addItemform").submit(function(event) {
@@ -64,31 +97,17 @@ m++;
     });
   });
   
-  /* ------------------------------------End Of Add Item Operation----------------------------------------------------- */
+  /* --------------------------------------------------End Of Add Item Operation----------------------------------------------------- */
   
-  /* --------------------------------------------------Read Operation ------------------------------------------*/
+  /* ------------------------------------------------------Read Operation ------------------------------------------*/
   
-
-
-
   gRefresh();
 
 
-
-
-
-
-
-
-
-
-/*----------------- End of Read Operation */  
+/*------------------------------------------------------ End of Read Operation------------------- */  
   
 
-//---------------------------------------------------------mobile edit press ---------------------
-
-
-
+//----------------------------------------------------------mobile edit starts -----------------------------
 
 $(document).on('click', '.meditItem', function(){  
 
@@ -127,9 +146,10 @@ var timea= x[0];
 
 
 });
+//-----------------------------------------------------------mobile edit End ---------------------
 
 
-//----------------------------------------------mDelltec starts--------------------------------------------------
+//----------------------------------------------------------mobile Deletec starts----------------------------------
 
 $(document).on('click', '.mdeleteItem', function(){  
            
@@ -149,33 +169,10 @@ $(document).on('click', '.mdeleteItem', function(){
 
   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//--------------------------------------------------------mobile Delete End--------------------------------------------------
 
   
-  /* ---------------------------------------------- Edit / Update operationb -----------------------------------*/ 
+  /* --------------------------------------------------------- Edit start--------------------------------*/ 
 
    $(document).on('click', '.editItem', function(){  
            
@@ -272,7 +269,7 @@ $(document).on('click', '.mdeleteItem', function(){
 	/*------------------------------------------------ End of Edit / Update operationb -----------------------*/
 	
 	
-	/*------------------------------------------------------------ Delete operation ------------------------------*/
+	/*------------------------------------------------------------table Delete operation ------------------------------*/
 
    $(document).on('click', '.deleteItem', function(){  
            
@@ -323,7 +320,7 @@ $(document).on('click', '.mdeleteItem', function(){
   });
   
   
-  /*-------------------------------------- End Delete operation -----------------------------------------*/
+  /*-------------------------------------- End  table Delete operation -----------------------------------------*/
   
   $(document).on('click', '#prev', function(){ 
 
@@ -341,7 +338,7 @@ gRefresh();
 $("#yearSelect").html(y);
 gRefresh();
   })
-
+//------------------------------------------gRefresh-----------------------------------------------------------
 
 function gRefresh()
 {   $("#disMonth").html($( "#monthSelect option:selected" ).text());
@@ -353,7 +350,8 @@ $("#edisYear").html($("#yearSelect").text());
   $( "#itemTable" ).load(window.location.href + " #itemTable" );
   var month =$( "#monthSelect option:selected" ).text();
   var year = $("#yearSelect").text();
-
+  $("#calenderTitle").html(month+" "+year);
+  
   $body = $("body");
   $body.addClass("loading"); 
   
@@ -362,8 +360,12 @@ $("#edisYear").html($("#yearSelect").text());
 
     if(data.tableEmpty == 'N'){  
     var response = data.items;
-    $(function () {
+    $(function () { 
+      const fruits = ["Banana", "Orange", "Apple", "Mango"];
     $.each(response, function (i, item) { 
+      
+      
+
             $(
               "<tr>"+
               
@@ -425,25 +427,28 @@ var x =timeMix.split(" to ");
 '</div>'
   ).appendTo('#mobileViewArea')});
 
- });
+ });// -----------------------------function inside jquory end here--------------------------
 
 
 
 
     $body.removeClass("loading");
-    }
+    }//-------------------------------if table empty  end here--------------
     else{
-     
+     // dates=[];
     $body.removeClass("loading"); 
 
     }
-  });
+    $("#monitor").val(dates);
+    
+   
+  
+  });//------------------------------j quory end here---------------
   
   
-  
-  
+
  
-}
+}//-------------------------------------------gRefresh End here-------------------------------------------------------
 
 
 $("#monthSelect").change(function(){
@@ -464,3 +469,14 @@ $("#toI").click(function(){
 
   $("#purI").click(function(){
     $('#purpose').val("Assisting SSO for");});
+
+   
+   
+    
+    function gpress(x) {
+   console.log("entered "+x+"x");
+   var y =$("#monitor").val();
+$("#monitor").val(y+x+"x");
+
+
+    }
