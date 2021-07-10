@@ -6,6 +6,9 @@ background:  #cfcece;
 font-family: 'Varela Round', sans-serif;
 font-size: 13px;
 }
+thead{
+    background-color: rgb(255, 255, 255);
+}
 .table-wrapper {
     background: #fff;
     padding: 20px 25px;
@@ -59,7 +62,10 @@ border-radius:10px;
  table.table tr th:last-child {
   width: 100px;
  }
-    table.table-striped tbody tr:nth-of-type(odd) {
+ table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f5f3f3;
+}
+    table.table-striped tbody tr {
      background-color: #fcfcfc;
  }
  table.table-striped.table-hover tbody tr:hover {
@@ -224,7 +230,7 @@ border-radius:10px;
     display:    none;
     position:   fixed;
     z-index:    1000;
-    top:        0;
+    top:       0px;
     left:       0;
     height:     100%;
     width:      100%;
@@ -257,20 +263,6 @@ body.loading .modal1 {
     z-index: 9999999;
 
 }
-.my-80, .my-fifty, .my-20, .my-40, .my-90, .my-10{
-    float:left;   
-}
-.my-10{
-    width:10%;
-}
-.my-90{
-    width:90%;
-}
-.my-80{
-   
-    width:80%;
-}
-
 
 .modal-header {
 padding-top: 8px;
@@ -287,55 +279,13 @@ h1,h2,h3,h4,.tableContainer,.displayMY{
    
     
 }
-.myIcons{
-    
-    align-items: center;
-    background-color: rgb(3 88 121);
-    color: white;
-}
-
-.topdar{background:rgb(3 88 121) none repeat scroll 0 0;
-
-width:100%;
-
-margin-top:25px;
-padding:4px 30px 0px 30px;
-display: flex;
-flex-direction: row;
-    align-content: stretch;
-    justify-content: space-evenly;
-    align-items: center;
-
-}
-   
-#addItemBtn, #calenderBtn{
-   
-    color: white;
-    margin: 0px 10px 0px 10px;
-    
-}
-#travellog{
-    font-size: 16pt;
-}
-
-#addItemBtn2{
-    
-    color: white;
-    
-    
-    background-color: #677693;
-    border-color: #286090;
-    border-radius: 13px;
-}
-
-
 
 
 
 .tableContainer{
     overflow-x: auto;
     margin-top: 22px;
-    background-color: #d5d6d8;
+    background-color: #eae9e9;
     border-radius: 24px;
    
 }
@@ -353,7 +303,7 @@ flex-direction: row;
     justify-content: space-evenly;
     margin-top: 16px;
 }
-#prev:hover,#next:hover,  #addItemBtn:hover, #calenderBtn:hover, #monthSelect:hover, .mBanner i:hover{
+#prev:hover,#next:hover,#monthSelect:hover, .mBanner i:hover{
     color:rgb(245, 199, 199);
    
     cursor: pointer;
@@ -419,7 +369,7 @@ margin-left: 10px;
 margin-top: 45Px;
 padding: 20px 30px;
  
-border: 4px solid #9ac1ca;
+border: 4px solid #75d9fb;
   border-bottom: none;
  border-radius:20px 20px 0 0; 
   background-color:white;
@@ -450,7 +400,7 @@ border: 4px solid #9ac1ca;
     text-align: right;
     width: calc(100% - 20px);
     margin-left: 10px;
-    background-color:#9ac1ca;
+    background-color:#75d9fb;
   
     border: 1px solid rgb(190, 189, 189);
     border-top: none;
@@ -568,4 +518,29 @@ select option {
 }
 #fromI,#toI, #purI{
   margin:0px 0px 0px 8px;
+}
+.week{
+    width:100%;
+    height:40px;
+   
+    margin:1px;
+    display: flex;
+    flex-direction: row;
+    padding: 3px;
+    justify-content: space-around;
+}
+
+
+.day{
+    width:calc(100%/8);
+height:100%;
+    color:rgb(95, 58, 10);
+    border:1px solid #e06e5f;
+   box-shadow: 0 2px 4px rgb(0 0 0 / 10%),
+ 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 5px;
+    background: rgb(255, 255, 255);
+}
+#monitor{
+    width:100%;
 }
