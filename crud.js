@@ -474,7 +474,7 @@ $("#toI").click(function(){
    
     
     function gpress(x) {
-   console.log("entered "+x+"x");
+ 
    var y =$("#monitor").val();
 $("#monitor").val(y+x+"x");
 
