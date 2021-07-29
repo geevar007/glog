@@ -439,7 +439,7 @@ var x =timeMix.split(" to ");
     $body.removeClass("loading"); 
 
     }
-    $("#monitor").val(dates);
+    $("#monitor").val("");
     
    
   
