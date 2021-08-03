@@ -484,4 +484,4 @@ function save(){
       var value= JSON.stringify(response);
      
       var passData = "?" +value ;
-      window.location.href = "save.html" + passData;}
+      window.location.href = "https://geevar007.github.io/travelentry/save.html" + passData;}
