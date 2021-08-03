@@ -359,9 +359,9 @@ $("#edisYear").html($("#yearSelect").text());
     
 
     if(data.tableEmpty == 'N'){  
-    var response = data.items;
+    response = data.items;
     $(function () { 
-      const fruits = ["Banana", "Orange", "Apple", "Mango"];
+     
     $.each(response, function (i, item) { 
       
       
@@ -482,6 +482,6 @@ $("#monitor").val(y+x+"x");
     }
 function save(){
       var value= JSON.stringify(response);
-     console.log("program working");
+     console.log(value);
       var passData = "?" +value ;
       window.location.href = "save.html" + passData;}
