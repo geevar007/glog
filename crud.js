@@ -482,6 +482,6 @@ $("#monitor").val(y+x+"x");
     }
 function save(){
       var value= JSON.stringify(response);
-     
+     console.log("program working");
       var passData = "?" +value ;
       window.location.href = "https://geevar007.github.io/travelentry/save.html" + passData;}
