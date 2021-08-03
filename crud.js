@@ -480,3 +480,8 @@ $("#monitor").val(y+x+"x");
 
 
     }
+function save(){
+      var value= JSON.stringify(response);
+     
+      var passData = "?" +value ;
+      window.location.href = "save.html" + passData;}
