@@ -1,0 +1,86 @@
+/* Styles go here */
+
+
+  
+  .page-footer, .page-footer-space {
+    height: 50px;
+  
+  }
+  
+  .page-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid black; /* for demo */
+    background: yellow; /* for demo */
+  }
+  
+  .page-header {
+    
+    text-align: center;
+    width: 100%;
+   /* border-bottom: 1px solid black;  for demo */
+    background: rgb(247, 247, 219); /* for demo */
+  }
+  
+  .page {
+    page-break-after: always;
+  }
+  
+
+  button {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+
+  @page {
+    margin: 20mm
+  }
+  
+  @media print {
+     thead {display: table-header-group;} 
+     tfoot {display: table-footer-group;}
+     
+     button {display: none;}
+     a{display: none;}
+     
+     body {margin: 10mm;}
+  }
+  #headding, #monthYear {
+    font-size: 16pt;
+    margin: 4px;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 0px;
+  }
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  table {
+    width:100%;
+  }
+  table {
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  th {
+    height: 35px;
+    font-size: 12pt;
+    vertical-align:bottom;
+  }
+  td{
+  text-align: center;
+  height: 28px;
+  vertical-align:bottom;
+  }
+  p{
+    font-size: 12pt;
+    font-family:Arial, Helvetica, sans-serif;
+  }
