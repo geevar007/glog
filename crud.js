@@ -480,6 +480,7 @@ $("#monitor").val(y+x+"x");
 
 
     }
+console.log(response);
 function save(){
       var value= JSON.stringify(response);
      console.log(value);
