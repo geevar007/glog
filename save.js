@@ -38,7 +38,7 @@ $("#monthYear").html("for the month of  "+month+" "+year)
  $("#headding").html("Tour particulars of "+myName+" ("+desig+")"+", Office of Assistant Director (Soil Survey),"+place);
 $("#place").html(place);
 $("#fName").html(myName);
-$("#fdesig").html(desig);
+$("#fDesig").html(desig);
  /*queryString = .substring(1);
 var queries = queryString.split("&");
 for (var i = 0; i < queries.length; i++)
