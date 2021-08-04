@@ -359,6 +359,9 @@ $("#edisYear").html($("#yearSelect").text());
     
 
     if(data.tableEmpty == 'N'){  
+    document.getElementById("printRep").style.display="block";
+     document.getElementById("itemTable").style.display="block"; 
+     document.getElementById("gImg").style.display="none"; 
     response = data.items;
     $(function () { 
      
@@ -436,6 +439,9 @@ var x =timeMix.split(" to ");
     }//-------------------------------if table empty  end here--------------
     else{
      // dates=[];
+   document.getElementById("printRep").style.display="none";
+     document.getElementById("itemTable").style.display="none";
+     document.getElementById("gImg").style.display="block"; 
     $body.removeClass("loading"); 
 
     }
