@@ -369,7 +369,7 @@ margin: 0px 0px 0px 0px;
 #titleImg{
 position: relative;
 top: 101px;
-left:70px;
+left:6%;
 z-index: 1;
 }
 
@@ -568,6 +568,6 @@ img {
     
     width:auto;  
   }
-  #gImg{
+   #fRoad{
     max-width:100%;
   }
