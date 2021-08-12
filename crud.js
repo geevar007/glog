@@ -11,6 +11,7 @@ var gx= new Date();
 var m = gx.getMonth();
 
 var y= gx.getFullYear();
+var dd=gx.getDate();
 var response;
 
 m++;
@@ -345,7 +346,7 @@ function gRefresh()
 $("#disYear").html($("#yearSelect").text());
 $("#edisMonth").html($( "#monthSelect option:selected" ).text());
 $("#edisYear").html($("#yearSelect").text());
- 
+ $("#date").val(dd);
   $( "#mobileViewArea" ).load(window.location.href + " #mobileViewArea" );
   $( "#itemTable" ).load(window.location.href + " #itemTable" );
   var month =$( "#monthSelect option:selected" ).text();
@@ -361,7 +362,7 @@ $("#edisYear").html($("#yearSelect").text());
     if(data.tableEmpty == 'N'){  
     document.getElementById("printRep").style.display="block";
      document.getElementById("itemTable").style.display="block"; 
-     document.getElementById("gImg").style.display="none"; 
+     document.getElementById("noRImg").style.display="none"; 
     response = data.items;
     $(function () { 
      
@@ -441,7 +442,7 @@ var x =timeMix.split(" to ");
      // dates=[];
    document.getElementById("printRep").style.display="none";
      document.getElementById("itemTable").style.display="none";
-     document.getElementById("gImg").style.display="block"; 
+     document.getElementById("noRImg").style.display="block"; 
     $body.removeClass("loading"); 
 
     }
