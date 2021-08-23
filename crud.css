@@ -1,5 +1,5 @@
 
- body {
+ body,#myKey  {
     color: #566787;
 background:  #cfcece;
 
@@ -570,4 +570,7 @@ img {
   }
    #fRoad{
     max-width:100%;
+  }
+#myKey::placeholder {
+    color:#337ab7;  
   }
