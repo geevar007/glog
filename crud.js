@@ -89,9 +89,10 @@ else{
         mode:mode,
         km:km,
         purpose:purpose,
+	myKey:readKey(),
       },
       function(data,status){
-        //alert("Data: " + data + "\nStatus: " + status);
+        alert(data);
         $body.removeClass("loading");
        gRefresh();
       
@@ -254,11 +255,12 @@ $(document).on('click', '.mdeleteItem', function(){
         purpose:purpose,
         month:month,
         year:year,
+	myKey:readKey(),
       },
-      function(data1,status1){
+      function(data,status){
         
       $body.removeClass("loading");
-     // alert("Data: " + data1 + "\nStatus: " + status1); 
+     alert(data); 
 
        // location.reload();
        gRefresh();
@@ -309,12 +311,12 @@ $(document).on('click', '.mdeleteItem', function(){
         action: "deleteItem",
         no:no,
         month:month,
-       
+       myKey:readKey(),
        
       },
-      function(data1,status1){
+      function(data,status){
        $body.removeClass("loading");
-        //alert("Data: " + data1 + "\nStatus: " + status1);
+        alert(data);
         gRefresh();
         //location.reload();
     });
@@ -493,3 +495,8 @@ function save(){
      console.log(value);
       var passData = "?" +value ;
       window.location.href = "save.html" + passData;}
+
+function readKey(){
+      var gx =$("#myKey").val();
+        return gx;
+ }
