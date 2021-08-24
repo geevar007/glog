@@ -40,9 +40,10 @@ else{
       dates:dates,
       month:month,
       year:year,
+	myKey:readKey(),
     },
     function(data,status){
-      alert("Data: " + data + "\nStatus: " + status);
+      alert(data);
       $body.removeClass("loading");
      gRefresh();
     
