@@ -353,7 +353,7 @@ $("#calenderTitle").html(month+" "+year);
     var gPassD = JSON.parse(localStorage.getItem(year+month));
 setTimeout(function() {
       drawTables(gPassD); 
-    }, 300);
+    }, 600);
   
   }
   else{
