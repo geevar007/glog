@@ -14,7 +14,7 @@ m++;
   $(document).ready(function(){  
     document.getElementById("printRep").style.display="none";
     document.getElementById("itemTable").style.display="none";
-localStorage.clear();
+
 month =$( "#monthSelect option:selected" ).text();
 year = $("#yearSelect").text();
 gRefresh();
