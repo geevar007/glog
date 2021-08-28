@@ -488,3 +488,7 @@ function readKey(){
   console.log( "data is"+data);
   localStorage.removeItem(year+month);
   gRefresh();}}
+ function sRemove(){
+    localStorage.clear();
+    gRefresh();
+  }
