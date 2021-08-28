@@ -7,8 +7,8 @@ var months = ['x',
     ];
 gData =gData.substring(1);
 console.log(gData);
-var jData = JSON.parse(gData);
-console.log("packed");
+var oData = JSON.parse(gData);
+var jData = oData.items;
 var myName = "Geevar kollanoor u"
 var desig ="Lascar"
 var place ="Thrissur"
