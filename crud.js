@@ -6,6 +6,7 @@ var dd=gx.getDate();
 var sData;
 var month;
 var year;
+const gWeeks =["ഞായർ ","തിങ്കൾ","ചൊവ്വ ","ബുധൻ ","വ്യാഴം ","വെള്ളി","ശനി"]
 m++;
 
   $("#monthSelect").val(m);
@@ -403,10 +404,13 @@ function fetchData(){
             "</tr>").appendTo('#itemTable');
 var timeMix=item.timea;
 var x =timeMix.split(" to ");
+const tDt = new Date(item.month+","+item.date+","+item.year);
+let day = gWeeks[tDt.getDay()];
 
             $(
 '<div class="mySlip"><div id="dDate">'+
-        '<p id="pMonth">'+item.month+'</p><h2>'+item.date+'</h2><p id="pYear">'+item.year+'</p></div>'+
+        '<div class="rDate">' +'<h1>'+item.date+'</h1>'+'</div>'+
+        '<p>'+item.month+'   '+item.year+'  - '+day+'</p>'+'</div>'+
     '<div class=dData>'+                       
         '<p><b>Time:</b> '+x[0]+' <b>to:</b> '+x[1]+'</p>'+
         '<p><b>From: </b>'+item.from+' <b>To:</b> '+item.to+'</p>'+
