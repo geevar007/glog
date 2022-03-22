@@ -467,7 +467,7 @@ body,#dDate{
 
     position: relative;
     left: 35%;
-    bottom: 22px;
+    bottom: 35px;
     background-color:tomato;
     width:55%;
     height: 26Px;
@@ -480,6 +480,10 @@ body,#dDate{
     flex-wrap: nowrap;
     
    
+}
+.dData{
+    position:relative;
+    top:-23px;
 }
 #dDate h1{
     color: tomato;
