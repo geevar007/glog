@@ -464,30 +464,49 @@ body,#dDate{
     margin-left: 10%;
 }
 #dDate{
+
+    position: relative;
+    left: 35%;
+    bottom: 22px;
     background-color:tomato;
-    
-  
-    width:75px;
-    height: 75Px;
-    border-radius: 5px;
+    width:55%;
+    height: 26Px;
+    border-radius: 15px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
     align-content: space-around;
     flex-wrap: nowrap;
     
    
 }
-#dDate h2{
-    color:white;
-    margin-top:0px;
-    margin-bottom: 0px;
-
+#dDate h1{
+    color: tomato;
+    
+    font-size: 19px;
+    font-weight: 750;
+    margin-top:8px;
+ 
 }
 #dDate p{
     color:white;
    
+}
+.rDate {
+    position: relative;
+    bottom: -8px;
+    left: -3%;
+    height: 40px;
+    width: 40px;
+    background-color: #f5f5f5;
+    border-radius: 28px;
+    border: 2px solid tomato;
+ text-align: center;
+}
+#dDate p{
+    color:white;
+   margin:auto;
 }
 #pMonth{
     margin-top:3px;
