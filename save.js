@@ -28,7 +28,7 @@ $.each(jData, function (i, item) {
       "<td>"+item.date+"-"+MM+"-"+year+"</td>"+
       "<td>"+item.timea+"</td>"+
      "<td>"+item.from+"</td>"+
-      "<td>"+item.to+"</td>"+
+      "<td>"+item.to+"&back"+"</td>"+
       "<td>"+item.mode+"</td>"+
       "<td>"+item.km+"</td>"+
       '<td >'+item.purpose+"</td>"+
