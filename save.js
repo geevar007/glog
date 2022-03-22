@@ -12,6 +12,7 @@ var jData = oData.items;
 var myName = "Geevar kollanoor u"
 var desig ="Lascar"
 var place ="Thrissur"
+var hod="Assistant Director (Soil Survey)"
 
 var month=jData[0].month
 var MM=months.indexOf(month);
@@ -28,20 +29,15 @@ $.each(jData, function (i, item) {
       "<td>"+item.date+"-"+MM+"-"+year+"</td>"+
       "<td>"+item.timea+"</td>"+
      "<td>"+item.from+"</td>"+
-      "<td>"+item.to+"&back"+"</td>"+
+      "<td>"+item.to+" &back"+"</td>"+
       "<td>"+item.mode+"</td>"+
       "<td>"+item.km+"</td>"+
       '<td >'+item.purpose+"</td>"+
       
     "</tr>").appendTo('#printTable')})
 $("#monthYear").html("for the month of  "+month+" "+year)
- $("#headding").html("Tour particulars of "+myName+" ("+desig+")"+", Office of Assistant Director (Soil Survey),"+place);
+ $("#headding").html("Tour particulars of "+myName+" ("+desig+")"+", Office of"+hod+","+place);
 $("#place").html(place);
 $("#fName").html(myName);
 $("#fDesig").html(desig);
- /*queryString = .substring(1);
-var queries = queryString.split("&");
-for (var i = 0; i < queries.length; i++)
-{
-  document.write(queries[i] + "<br>");
-}*/
+ 
