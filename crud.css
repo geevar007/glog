@@ -472,10 +472,10 @@ body,#dDate{
 #dDate{
 
     position: relative;
-    left: 25%;
+    left: 17%;
     bottom: 35px;
     background-color:tomato;
-    width:66%;
+    width:75%;
     height: 26Px;
     border-radius: 15px;
     display: flex;
