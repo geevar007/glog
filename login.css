@@ -1,0 +1,86 @@
+
+body{
+ 
+background:  #cfcece;
+  background-image: url("bg.png");
+  color: #566787;
+
+}
+
+.welcome input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  .welcome button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  .welcome button:hover {
+    opacity: 0.8;}
+  
+    
+     
+      .wcontainer {
+        padding: 16px;
+      }
+      .welcome {
+        font-family: 'Varela Round', sans-serif;
+        color: #566787;
+        font-size: 13px;
+        z-index: 1; /* Sit on top */
+       
+        max-width: 340px;
+        width: 100%; /* Could be more or less, depending on screen size */
+       
+       
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        margin:auto;
+        margin-top: 50px;
+        /*padding-top: 60px;*/
+       border: 1px solid rgb(197, 195, 195);
+       background: white;
+      }
+      .modal-content {
+        background-color: #ad0c0c;
+        margin: 5% 5% 0 0; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        
+      }
+
+      .welcome img{
+        position:absolute;
+        margin: -34px 0px 0px 0Px;
+      }
+      img {
+    
+        width:auto;  
+      }
+       #fRoad{
+        max-width:100%;
+      }
+      /* Add Zoom Animation 
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+  }
+  
+  @-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+  }
+    
+  @keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+  }
+  */
