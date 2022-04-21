@@ -501,7 +501,7 @@ function save(){
 
 //-------------------------------------Reading key- function starts---------------------
 function readKey(){
-      var gx =$("#myKey").val();
+      var gx =localStorage.getItem("token");
         return gx;
  } 
  //-------------------------------------Reading key- function End---------------------
