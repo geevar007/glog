@@ -429,7 +429,8 @@ img {
 .afterLogin{
     display:none;}
 #dateRibbon{
-    display:flex;}
+    display:flex;
+    justify-content: center;}
  #dateRibbon p {
     margin-top: 2px;
     font-size:11px;
