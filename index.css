@@ -432,13 +432,13 @@ img {
     display:flex;
     justify-content: center;}
  #dateRibbon p {
-    margin-top: 2px;
-    font-size:11px;
+    margin-top: 7px;
+    font-size:13px;
     color:white;}
 .aDate {
     margin:2px;
-    height: 20px;
-    width: 20px;
+    height: 30px;
+    width: 30px;
     background-color:rgb(80, 79, 79);
     border-radius: 28px;
     text-align: center;}
