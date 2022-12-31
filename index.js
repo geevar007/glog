@@ -519,7 +519,7 @@ $("#monitor").val(y+x+"x");
 
 //---------------------------------------Print press Starts----------------
 function save(){
-      window.location.href = "Save.html" +"?"+year+month;}
+      window.location.href = "save.html" +"?"+year+month;}
 //----------------------------------------print press Ends-------------------------
 
 
