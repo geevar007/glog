@@ -41,3 +41,5 @@ $("#place").html(place);
 $("#fName").html(myName);
 $("#fDesig").html(desig);
  
+function nSave(){
+      window.location.href = "newSave.html" +"?"+year+month;}
