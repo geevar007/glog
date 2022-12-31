@@ -1,8 +1,29 @@
 var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyvcep18qZhjHFPOE6MHgLSo/exec";
+
+var months = ['x',
+    'January', 'February', 'March', 'April', 'May',
+    'June', 'July', 'August', 'September',
+    'October', 'November', 'December'
+    ];
 var gx= new Date();
+var dd=gx.getDate();
+ if(localStorage.getItem("seldD")){
+
+var YearMonth=localStorage.getItem("seldD");
+var myArray = YearMonth.split("-");
+console.log("year= "+myArray[0] );
+console.log("month= "+myArray[1] );
+var nOM= months.indexOf(myArray[1])-1;
+console.log("recovered  m is "+nOM);
+
+var m = nOM;
+var y= myArray[0];
+console.log("number of month is "+m);
+}
+else {
 var m = gx.getMonth();
 var y= gx.getFullYear();
-var dd=gx.getDate();
+}
 var sData;
 var month;
 var year;
@@ -82,6 +103,8 @@ function gRefresh(){
 
 //-----------------------------------------------------------draw Tables function--------------------
     function drawTables(data) { 
+      console.log("selected month updated"+year+month);
+       localStorage.setItem("seldD",year+"-"+month);
      if(data.tableEmpty == 'N'){  
       document.getElementById("printRep").style.display="block";
          document.getElementById("itemTable").style.display="block"; 
@@ -496,7 +519,7 @@ $("#monitor").val(y+x+"x");
 
 //---------------------------------------Print press Starts----------------
 function save(){
-      window.location.href = "save.html" +"?"+year+month;}
+      window.location.href = "Save.html" +"?"+year+month;}
 //----------------------------------------print press Ends-------------------------
 
 
