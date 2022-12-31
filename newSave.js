@@ -6,7 +6,7 @@ var months = ['x',
     'October', 'November', 'December'
     ];
     function save(){
-      window.location.href = "Save.html" +"?"+year+month;}
+      window.location.href = "save.html" +"?"+year+month;}
 gData =gData.substring(1);
 var oData = JSON.parse(localStorage.getItem(gData));
 //var oData = JSON.parse(gData);
