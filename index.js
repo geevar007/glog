@@ -104,7 +104,7 @@ function gRefresh(){
 //-----------------------------------------------------------draw Tables function--------------------
     function drawTables(data) { 
       console.log("selected month updated"+year+month);
-       localStorage.setItem("seldD",year+"-"+month);
+       localStorage.removeItem("seldD");
      if(data.tableEmpty == 'N'){  
       document.getElementById("printRep").style.display="block";
          document.getElementById("itemTable").style.display="block"; 
@@ -519,6 +519,7 @@ $("#monitor").val(y+x+"x");
 
 //---------------------------------------Print press Starts----------------
 function save(){
+	localStorage.setItem("seldD",year+"-"+month);
       window.location.href = "save.html" +"?"+year+month;}
 //----------------------------------------print press Ends-------------------------
 
