@@ -37,7 +37,7 @@ $.each(jData, function (i, item) {
      "<td>"+item.from+"</td>"+
       "<td>"+item.to+"</td>"+
       "<td>"+item.mode+"</td>"+
-      "<td>"+item.km+"</td>"+
+      "<td rowspan=3>"+item.km+"</td>"+
       '<td >'+"Towards journey"+"</td>"+
       
     "</tr>"+
@@ -46,7 +46,7 @@ $.each(jData, function (i, item) {
       
       "<td></td>"+
 
-      "<td colspan=4>"+"Halt at "+item.to+"</td>"+
+      "<td colspan=3>"+"Halt at "+item.to+"</td>"+
        "<td >"+item.purpose+"</td>"+
        
      
@@ -60,10 +60,8 @@ $.each(jData, function (i, item) {
      "<td>"+item.to+"</td>"+
       "<td>"+item.from+"</td>"+
      "<td>"+item.mode+"</td>"+
-      "<td></td>"+
       '<td >'+"Return journey"+"</td>"+
-      
-    "</tr>"
+      "</tr>"
     
     
     ).appendTo('#printTable')})
