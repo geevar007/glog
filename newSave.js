@@ -61,10 +61,12 @@ $.each(jData, function (i, item) {
       "<td>"+item.from+"</td>"+
      "<td>"+item.mode+"</td>"+
       '<td >'+"Return journey"+"</td>"+
-      "</tr>"
+      "</tr>"+
+       "<tr>"+
+        "<td colspan=7 Class=tSpace></td>"+
+       "</tr>"
     
-    
-    ).appendTo('#printTable')})
+ ).appendTo('#printTable')})
 $("#monthYear").html("for the month of  "+month+" "+year)
  $("#headding").html("Tour particulars of "+myName+" ("+desig+")"+", Office of"+hod+","+place);
 $("#place").html(place);
