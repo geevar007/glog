@@ -1,22 +1,21 @@
+document.getElementById("printerI").style.display="none"
+
 function enter() { 
-
-
-    $('#paper').load(document.URL + ' #paper');
-
-
-    setTimeout(function() {
-        
-
-
-
-        
-      
-  
-
-
-
-  
+    document.getElementById("printerI").style.display="none"
     var samplName= document.getElementById("sampleCode").value;
+    $('#paper').load(document.URL + ' #paper');
+    var x =samplName;
+    
+    setTimeout(function(){
+    if (x == "" || x == null) {
+        
+        alert("Nothing to print");}
+else { 
+  
+
+
+    setTimeout
+        
     var sampleNumber= document.getElementById("slNo").value;
     var names = document.getElementsByClassName("name");
     var codes = document.getElementsByClassName("code");
@@ -38,14 +37,11 @@ $(
 
 
 ).appendTo('#plain')
+document.getElementById("printerI").style.display="block";
 
 if (no!=0){no++;}
 }
-}, 600);
+;
 
-
-
-
-
-    }
-    
+ }},100);}
+ 
