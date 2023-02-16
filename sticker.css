@@ -1,0 +1,102 @@
+body{
+ 
+    background:  #cfcece;
+      background-image: url("bg.png");
+     
+    }
+
+
+.paper {
+margin: auto;
+width:12cm;
+height: 17.5cm;
+}
+
+
+.sticker {
+    float: left;
+    width:4cm;
+    height:1.94cm;
+   }
+
+
+.printArea{
+text-align: center;
+margin:auto;
+width:3.5cm;
+height:1.6cm;
+background-color: rgb(255, 255, 255);
+border:.1cm solid rgb(236, 87, 87);;
+
+}
+
+
+.spacer{
+    float: left;
+    height:3cm;
+    width:100%;
+}
+
+
+h3{
+    color: #000;
+    margin-top: .3cm;
+    margin-bottom: 0px;
+}
+p{
+    color: #000;
+font-size: large;
+    margin-top: 0px;
+    font-weight: bold;
+}
+@media print {
+
+.input{display:none}
+.printArea{border: none}
+.spacer{display:none}
+.paper{border: none}
+
+
+}
+.input {
+    padding:10px;
+   border: 5px solid sandybrown;
+width: 450px;
+    height: auto;
+    float: left;
+margin: auto;
+}
+button{
+    width: 150px;
+    height: 50px;
+    margin-top: 10px;
+    background-color: rgb(4, 110, 114);
+    border: 1px solid white;
+    border-radius: 10px;
+    font-size:medium;
+    color: white;
+    
+}
+button:hover {
+    opacity: 0.8;}
+.inputs{
+    margin-top: 10px;
+}
+#leftDiv{
+
+    margin: auto;
+  
+    width:200px;
+}
+
+#enterB{
+
+    padding-left: 5%;
+    margin-top: 15px;
+    float: left;
+}
+#printerI{
+   
+    margin-top: 22px;
+    padding-left: 75%;
+}
