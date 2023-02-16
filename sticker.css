@@ -70,7 +70,7 @@ button{
     width: 150px;
     height: 50px;
     margin-top: 10px;
-    background-color: rgb(4, 110, 114);
+    background-color: rgb(112, 127, 128);
     border: 1px solid white;
     border-radius: 10px;
     font-size:medium;
@@ -78,7 +78,10 @@ button{
     
 }
 button:hover {
-    opacity: 0.8;}
+    background-color: blue;
+    opacity: .5;}
+
+    
 .inputs{
     margin-top: 10px;
 }
