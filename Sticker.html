@@ -12,8 +12,11 @@
 <body>
     
 
-<div class="input">
-
+<div class="pos">
+<div class="messagebox"id="messagebox"></div>
+    <div class="printing" id="printing"></div>
+    <div class="posPaper" id="posPaper"></div>
+    <div class="posscreen">
 
 <div id="leftDiv">
 <div class="inputs"><label for="uname">Sample Code</label></div>
@@ -24,20 +27,29 @@
 
 <div class=><input type="number"id="slNo"></div>
 
+<div class="inputs"><label for="uname">Ending Number</label></div>
+
+<div class=><input type="number"id="endNo"></div>
+
 </div>
 
     <div class="inputs" id="enterB"><button onclick="enter()" title="Enter">Enter</button></div>
 
-    <div class="inputs" id="printerI"><a onClick="window.print()" ><img src="print.png" alt="printer"style="width: 52px" title="Print"></a></div>
+    <div class="inputs" id="printerI"><a onClick="gPrint()" ><img src="printn.png" alt="printer"style="width: 52px" title="Print"></a></div>
 
 
+</div>
 </div>
 
 <div id="paper">
 
 <div class="paper" id="plain"></div>
 
+
 </div>
+
+
+
 
 </body>
 <script type="text/javascript" src="sticker.js"></script>
