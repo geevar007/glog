@@ -6,6 +6,11 @@ body{
     }
 
 
+    label{
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-size:x-small;
+        color: rgb(57, 76, 100);
+    }
 .paper {
 margin: auto;
 width:12cm;
@@ -51,35 +56,40 @@ font-size: large;
 }
 @media print {
 
-.input{display:none}
+.pos{display:none}
 .printArea{border: none}
 .spacer{display:none}
 .paper{border: none}
-
-
+.printing{display: block}
+.messagebox{display:none}
 }
-.input {
+
+.posscreen{
+    margin-top: 416px;
+}
+.pos {
+   background-image: url("poss.png");
     padding:10px;
-   border: 5px solid sandybrown;
-width: 280px;
-    height: auto;
+  width: 343px;
+    height: 763px;
     float: left;
 margin: auto;
 }
 button{
-    width: 150px;
-    height: 50px;
-    margin-top: 10px;
-    background-color: rgb(112, 127, 128);
-    border: 1px solid white;
-    border-radius: 10px;
-    font-size:medium;
+    width: 100px;
+    height: 30px;
+    margin-top: 90px;
+    margin-left:20px;
+    background-color: rgb(74 106 118);
+    border:none;
+   
+    font-size:small;
     color: white;
     
 }
 button:hover {
-    background-color: blue;
-    opacity: .5;}
+    background-color: rgb(56, 80, 87);
+    }
 
     
 .inputs{
@@ -99,7 +109,45 @@ button:hover {
     float: left;
 }
 #printerI{
-   
-    margin-top: 22px;
-    padding-left: 75%;
+    position: absolute;
+    left: 260px;
+    top: 633px;
+   z-index: 11;
 }
+input{
+    border: none;
+}
+.posPaper{
+    background-color: #000;
+    background-image: url("modelsticker.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    left: 43px;
+    top: 278px;
+    z-index: 10;
+    width: 276px;
+    height: 386px;
+    }
+    .printing{
+        width: 257px;
+        height: 180px;
+        position: absolute;
+        left: 57px;
+        top: 430px;
+       z-index: 12;
+       background-image: url("printing.gif");
+       background-size: cover;
+        background-color: rebeccapurple;
+
+    }
+   .messagebox{
+    left: 57px;
+    top: 282px;
+    width:249px;
+    height:42px;
+    position: absolute;
+    z-index: 13;
+    background-image: url("mess.png");
+  
+   }
