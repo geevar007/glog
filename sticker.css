@@ -152,6 +152,9 @@ input{
    #printB{
     position: absolute;
     left: 180px;
-    
-
+    }
+.fa {  position: absolute;
+    left: 48px;
+    top:224px;
+    color:rgb(204, 202, 202);
    }
