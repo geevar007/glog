@@ -5,6 +5,12 @@ var months = ['x',
     'June', 'July', 'August', 'September',
     'October', 'November', 'December'
     ];
+    var places=[];
+
+    var arr = JSON.parse(localStorage.getItem("place"));
+
+    
+    
 var gx= new Date();
 var dd=gx.getDate();
  if(localStorage.getItem("seldD")){
@@ -19,6 +25,7 @@ console.log("recovered  m is "+nOM);
 var m = nOM;
 var y= myArray[0];
 console.log("number of month is "+m);
+
 }
 else {
 var m = gx.getMonth();
@@ -68,7 +75,7 @@ function gRefresh(){
   
     
     if(localStorage.getItem(year+month)){
-      console.log(month+year+" Data is here");
+      console.log(month+year+" Data in local memory");
       var gPassD = JSON.parse(localStorage.getItem(year+month));
   setTimeout(function() {
         drawTables(gPassD); 
@@ -103,15 +110,18 @@ function gRefresh(){
 
 //-----------------------------------------------------------draw Tables function--------------------
     function drawTables(data) { 
-      console.log("selected month updated"+year+month);
-       localStorage.removeItem("seldD");
+      console.log("selected month updated "+year+month);
+      localStorage.removeItem("seldD");
      if(data.tableEmpty == 'N'){  
       document.getElementById("printRep").style.display="block";
          document.getElementById("itemTable").style.display="block"; 
          document.getElementById("noRImg").style.display="none"; 
        var response = data.items;
-      
+     
         $.each(response, function (i, item) { 
+          
+          places.push(item.to);
+          
               $(
                 "<tr>"+
                 "<td>"+item.no+"</td>"+
@@ -157,17 +167,29 @@ function gRefresh(){
                    '<a href = "" class="mdeleteItem" data-toggle="modal"><i class="material-icons mDeletebtn" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'+
     '</div>'
     ).appendTo('#mobileViewArea')});
-   }
+   
+    var twoArray = arr.concat(places)
+
+    var test= JSON.stringify(removeDuplicates(twoArray));
+
+
+
+
+    localStorage.setItem("place", test);
+   
+    
+   
+  
+  }
    else{
     // dates=[];
-    console.log("no data for selected month"+month);
+    console.log("no data for selected month "+month);
   document.getElementById("printRep").style.display="none";
     document.getElementById("itemTable").style.display="none";
     document.getElementById("noRImg").style.display="block"; 
    $body.removeClass("loading"); 
   
    }
-  
   
   
   }// ------------------------------------------------------------end function draw Tables -----------------
@@ -519,8 +541,8 @@ $("#monitor").val(y+x+"x");
 
 //---------------------------------------Print press Starts----------------
 function save(){
-	localStorage.setItem("seldD",year+"-"+month);
-      window.location.href = "save.html" +"?"+year+month;}
+   localStorage.setItem("seldD",year+"-"+month);
+      window.location.href = "Save.html" +"?"+year+month;}
 //----------------------------------------print press Ends-------------------------
 
 
@@ -544,6 +566,134 @@ function readKey(){
 
 
  function gLogout(){
+   var tempCash = localStorage.getItem("place")
     localStorage.clear();
+    localStorage.setItem("place",tempCash);
     document.location.reload()
   }
+//-----------------------------------------------Auto complete-----------------------
+  function autocomplete(inp) {
+
+
+
+ 
+    /*the autocomplete function takes two arguments,
+    the text field element and an array of possible autocompleted values:*/
+    var currentFocus;
+    /*execute a function when someone writes in the text field:*/
+    inp.addEventListener("input", function(e) {
+        var a, b, i, val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+       
+  console.log("auto complete is running  received array is "+ arr);
+  
+  
+        if (!val) { return false }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML += arr[i].substr(val.length);
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type=hidden value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function(e) {
+                /*insert the value for the autocomplete text field:*/
+                inp.value = this.getElementsByTagName("input")[0].value;
+               
+               
+  
+                /*close the list of autocompleted values,
+                (or any other open lists of autocompleted values:*/
+                closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+    });
+    /*execute a function presses a key on the keyboard:*/
+    inp.addEventListener("keydown", function(e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+          increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) { //up
+          /*If the arrow UP key is pressed,
+          decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+    });
+    function addActive(x) {
+      /*a function to classify an item as "active":*/
+      if (!x) return false;
+      /*start by removing the "active" class on all items:*/
+      removeActive(x);
+      if (currentFocus >= x.length) currentFocus = 0;
+      if (currentFocus < 0) currentFocus = (x.length - 1);
+      /*add class "autocomplete-active":*/
+      x[currentFocus].classList.add("autocomplete-active");
+    }
+    function removeActive(x) {
+      /*a function to remove the "active" class from all autocomplete items:*/
+      for (var i = 0; i < x.length; i++) {
+        x[i].classList.remove("autocomplete-active");
+      }
+    }
+    function closeAllLists(elmnt) {
+
+      
+      /*close all autocomplete lists in the document,
+      except the one passed as an argument:*/
+      var x = document.getElementsByClassName("autocomplete-items");
+      for (var i = 0; i < x.length; i++) {
+        if (elmnt != x[i] && elmnt != inp) {
+          x[i].parentNode.removeChild(x[i]);
+        }
+      }
+    }
+    /*execute a function when someone clicks in the document:*/
+    document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+    });
+  }
+  
+  
+  
+  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+  autocomplete(document.getElementById("to"));
+
+
+
+  
+    
+    function removeDuplicates(arr) {
+        return arr.filter((item,
+           index) => arr.indexOf(item) === index);
+    }
+ 
+    
