@@ -442,3 +442,13 @@ img {
     background-color:rgb(80, 79, 79);
     border-radius: 28px;
     text-align: center;}
+
+.autocomplete-items div {
+       
+         cursor: pointer;
+         background-color: #fff; 
+         
+       }
+       .autocomplete-items div:hover {
+        background-color: #e9e9e9; 
+      }
