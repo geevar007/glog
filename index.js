@@ -7,9 +7,10 @@ var months = ['x',
     ];
     var places=[];
 
-    var arr = JSON.parse(localStorage.getItem("place"));
-
-    
+    if (localStorage.getItem("place")){
+      var arr = JSON.parse(localStorage.getItem("place"));
+}
+else{ var arr= ["Geevar"]}
     
 var gx= new Date();
 var dd=gx.getDate();
@@ -691,9 +692,21 @@ function readKey(){
 
   
     
-    function removeDuplicates(arr) {
+    function removeDuplicates(x) {
+
+
+      var arr=[];
+
+      for(var i=0;i<x.length;i++){
+
+          arr.push(x[i].trim());
+      }
         return arr.filter((item,
            index) => arr.indexOf(item) === index);
     }
+
+
+
+  
  
     
