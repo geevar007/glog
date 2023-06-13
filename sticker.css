@@ -46,7 +46,9 @@ h3{
     color: #000;
     margin-top: .3cm;
     margin-bottom: 0px;
+    
 }
+
 p{
     color: #000;
 font-size: large;
@@ -54,13 +56,11 @@ font-size: large;
     font-weight: bold;
 }
 @media print {
-.pos{display:none}
-.printArea{border: none}
-.spacer{display:none}
-.paper{border: none}
-.printing{display: block}
-.messagebox{display:none}
-}
+    .printing{display: block}
+    .noPrint{display:none}
+    .printArea{border: none}
+    .paper{border: none}
+    }
 
 .posscreen{
     margin-top: 416px;
@@ -158,3 +158,17 @@ input{
     top:224px;
     color:rgb(204, 202, 202);
    }
+.time p{
+    color: #b5b0b0;
+    font-size: 30px;
+    margin-top: 63px;
+    position: absolute;
+    top: 225px;
+    left: 125px;
+    cursor: default;}
+.half {
+
+width:60px;
+
+
+}
