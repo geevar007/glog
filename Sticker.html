@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-   <a href="http://geevar007.mobie.in/"> <i class="fa fa-home" aria-hidden="true"></i></a> 
+   <a href="http://geevar007.mobie.in/" class="noPrint"> <i class="fa fa-home " aria-hidden="true"></i></a> 
 
-<div class="pos">
+<div class="pos noPrint">
+    <div class="time" > <p id="sTime">0000</p></div>
     <div class="messagebox"id="messagebox"></div>
     <div class="printing" id="printing"></div>
     <div class="posPaper" id="posPaper"></div>
@@ -22,15 +23,16 @@
     <div id="leftDiv">
 <div class="inputs"><label for="uname">Sample Code</label></div>
 
-<div><input id="sampleCode" type="text"></div>
+<div><input id="sampleCode" type="text" ></div>
 
-<div class="inputs"><label for="uname">Starting Number</label></div>
+<div class="inputs"><label for="uname">Start Number</label><label style="margin-left:20px ;">Start position</label></div>
 
-<div><input type="number"id="slNo"></div>
+<div><input type="number"id="slNo" class="half"><input style="margin-left:20px ;"type="number"id="locat"  onpaste="return false;" ondrop="return false;"class="half" min="1" max="27"></div>
 
-<div class="inputs"><label for="endNo">Ending Number</label></div>
+<div class="inputs"><label for="endNo">End Number</label></div>
 
-<div><input type="number"id="endNo"></div>
+<div><input type="number"id="endNo" class="half">  <input style="margin-left:20px ;" type="checkbox" id="endPrint" name="vehicle1" value="End">
+    <label for="vehicle1"> End Name</label><br></div>
 
 </div>
 
