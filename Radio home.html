@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>working radio</title>
+
+
+
+
+
+
+
+<body >
+	
+<div class="radio">
+
+<div class="radioBody"> 
+
+<button id="prB" onclick="preS()"> </button>
+<button id="pwrB" onclick="pwrOn()"> </button>
+<button id="nxB" onclick="nxtS()"> </button>
+ <div id="lcdScreen">
+	
+<p id="lcdMessage"></p>
+
+ </div>
+
+
+
+</div>
+
+<audio autoplay="none"id="myAudio" src="" 
+style="display:none"></audio>
+
+<p id="demo"></p>
+	
+	
+	
+
+
+<style>
+@font-face {
+   font-family: lcdfont;
+   src: url(/fonts/geevar.ttf);
+}
+
+.radioBody{
+width:244px;
+height: 224px;
+background-image: url("/imgs/Radio.png");
+}
+#prB{
+
+width:34px;
+height:34px;
+background-image: url("/imgs/prbtn.png");
+border:none;
+border-radius: 25px;
+position: relative;
+top:129px;
+left:51px;
+cursor: pointer;
+
+}
+
+#nxB{
+
+width:34px;
+height:34px;
+background-image: url("/imgs/nBtn.png");
+border:none;
+border-radius: 25px;
+position: relative;
+top:130px;
+left:61px;
+cursor: pointer;
+
+}
+
+
+#pwrB{
+	width:55px;
+height:55px;
+background-image: url("/imgs/pwrB.png");
+border:none;
+border-radius: 30px;
+position: relative;
+top:140px;
+left:56px;
+cursor: pointer;
+}
+button:active{
+
+opacity: 0;
+
+}
+
+#lcdScreen{
+	text-align: center;
+	position: relative;
+top:-7px;
+left:56px;
+width:129px;
+	height:50px;
+	
+}
+#lcdScreen p{
+	
+	font-family: lcdfont;
+	color: #263C2B;
+	font-size: small;
+	line-height: 1.5;
+}
+               
+                
+ 
+
+</style>
+	
+<script>
+
+
+
+
+lcd = document.getElementById("lcdMessage")
+radio = document.getElementById("myAudio");
+pwrBtn= document.getElementById("pwrB");
+var radioStatus="off";
+setTimeout(console.log("woking",1000))
+const stations=["https://cast1.my-control-panel.com/proxy/myradio90fm/stream",
+"https://bcovlive-a.akamaihd.net/19b535b7499a4719a5c19e043063f5d9/ap-southeast-1/6034685947001/playlist.m3u8",
+				"https://air.pc.cdn.bitgravity.com/air/live/pbaudio101/playlist.m3u8",
+				"https://air.pc.cdn.bitgravity.com/air/live/pbaudio229/playlist.m3u8"]
+
+const stationNames=["My Radio 90 FM","uknon","uk2","uk3"]			
+sNo=0;
+
+function pwrOn(){
+if (radioStatus=="off"){
+
+pwrBtn.style.opacity ="0";
+RPlay(sNo);
+
+}
+
+else{lcd.innerHTML="Goodby..";
+radio.pause() ;
+radioStatus="off";
+switchOff(lcd);
+}
+
+
+
+}
+
+function nxtS(){
+	if (radioStatus!="off"){
+sNo++;
+RPlay(sNo);}
+
+
+}
+function preS(){
+	if (radioStatus!="off"){
+
+	sNo--;
+RPlay(sNo);}
+
+}
+
+function RPlay(x){
+radio.stop;
+radio.src=stations[x];
+radio.play() ;
+
+switchOn(lcd,stationNames[x]);
+
+
+
+
+}
+
+function switchOn(element,text){
+	
+
+clearInterval(id);
+var id = setInterval(changeOpacity,100);
+if(radioStatus=="off"){
+	element.innerHTML="Geevar Welcomes U";
+	radioStatus="on";
+	var y = 0;
+	element.style.opacity=y;
+}
+
+
+function changeOpacity(){
+	if( element.style.opacity ==1 ){ 
+		clearInterval(id);
+		setTimeout(setName,1500);
+	}
+else{
+	y= y+.1;
+	element.style.opacity=y;}
+	}
+function setName(){
+element.innerHTML=text;
+
+}
+}
+function switchOff(element){
+	var y = 1;
+	clearInterval(id);
+	var id = setInterval(changeOpacity,1000);
+	function changeOpacity(){
+	if( element.style.opacity ==0 ){ clearInterval(id);}
+else{
+	y= y-.1;
+	element.style.opacity=y;}
+	}
+
+}
+
+//var player = new Playerjs({id:"player", 
+//file:, autoplay:"0"})
+</script>
+
+</body>
+</html>
