@@ -428,19 +428,56 @@ img {
     margin:0px;}
 .afterLogin{
     display:none;}
-#dateRibbon{
+#dateRibbon {
+    cursor:default;
     display:flex;
     justify-content: center;}
  #dateRibbon p {
     margin-top: 7px;
     font-size:13px;
     color:white;}
+
+    #statusRibbon{
+        display:flex;
+        justify-content: space-evenly;
+        width: 100%;
+        height:fit-content;
+        background: #b1b3b4;
+
+    }
+    #cashed, #submited, #printed{
+
+        cursor: pointer;
+    }
+.iconCheckbox{
+    
+margin-top: 6px;
+}
+#statusIcon:hover{
+
+
+color: #021e2b;
+zoom:115%;
+
+}
+#statustext{
+    cursor: default;
+    font-size: 13px;
+font-weight: bolder;
+}
+#statusIcon{
+
+
+    cursor: pointer;
+
+}
 .aDate {
     margin:2px;
     height: 30px;
     width: 30px;
-    background-color:rgb(80, 79, 79);
-    border-radius: 28px;
+    background-color:rgb(10 91 102);
+    border-radius: 9px;
+    border-radius: 9px;
     text-align: center;}
 
 .autocomplete-items div {
@@ -462,3 +499,15 @@ top: 260px;
         top: 200px;
         
               }
+
+#cashedStamp{
+
+background: url("cashed.png") no-repeat center center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 999999;
+}
+              
