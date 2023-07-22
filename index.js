@@ -78,7 +78,7 @@ function gRefresh(){
     if(localStorage.getItem(year+month)){
       console.log(month+year+" Data in local memory");
       var gPassD = JSON.parse(localStorage.getItem(year+month));
-  setTimeout(function() {
+     setTimeout(function() {
         drawTables(gPassD); 
       }, 600);
       $( "#mobileViewArea" ).load(window.location.href + " #mobileViewArea" );
@@ -119,7 +119,13 @@ function gRefresh(){
          document.getElementById("noRImg").style.display="none"; 
        var response = data.items;
      
-        $.each(response, function (i, item) { 
+       if(response[0].date!=0){if (confirm("No index! is creat it ? ")) {createGindex();} 
+                                                          
+                                                            else {console.log( "You pressed Cancel!")}}
+      
+        else {var statusArry= response.splice(0, 1);readStatus(statusArry[0]);}
+       
+       $.each(response, function (i, item) { 
           
           places.push(item.to);
           
@@ -528,7 +534,7 @@ $("#toI").click(function(){
   $('#to').val("Thrissur HQ");});
 //--------------------------------------------------------------
   $("#purI").click(function(){
-    $('#purpose').val("Assisting SSO for");});
+    $('#purpose').val("Assisting SSO for Soil Sample collectin MAM updation");});
 //-----------------------------------------------------------------
    
    
@@ -705,8 +711,100 @@ function readKey(){
            index) => arr.indexOf(item) === index);
     }
 
+function createGindex(){
+
+  $.post(url,
+    {
+      action: "addItem",
+      date:0,
+      month:month,
+      year:year,
+      timea:"x",
+      
+      from:"x",
+      to:"x",
+      mode:"x",
+      km:0,
+      purpose:"x",
+myKey:readKey(),
+    },
+    function(data,status){
+      alert(data);
+      $body.removeClass("loading");
+     check(data);
+    
+  })
+ 
+   }
+   function statusupdate(){
+    document.getElementById("statusIcon").style.display="none";
+    document.getElementById("busyGif").style.display="block";
+var from="x"
+
+    if ($('#printed').is(":checked")){ from="p"}
+    if ($('#submited').is(":checked")){ from="s"}
+    if ($('#cashed').is(":checked")){from="c"}
 
 
-  
+    $.post(url,
+      {
+        action: "updateItem",
+       no: $("#indexNo").html(),
+        date:0,
+       timea:"1 to 1 ",
+       from:from,
+        to:"x",
+        mode:"x",
+        km:0,
+        purpose:"x",
+        month:month,
+        year:year,
+	myKey:readKey(),
+      },
+      function(data,status){
+        document.getElementById("statusIcon").style.display="block";
+        document.getElementById("busyGif").style.display="none";
+        check(data);
+    });
+
+
+$("#statustext").html(from)
+console.log("statusupdate");
+
+   }
+
+  function readStatus(status){
+    document.getElementById("busyGif").style.display="none";
+var no= status.no;
+var psc=status.from;
+
+$("#indexNo").html(no);
+
+switch(psc) {
+  case "p":
+    $('#printed').prop('checked',true);
+    $("#statustext").html("PRINTED");
+    document.body.style.backgroundColor="#fe000036";
+    break;
+  case "s":
+    $('#submited').prop('checked',true);
+    $("#statustext").html("SUBMITED");
+    document.body.style.backgroundColor="#b2b71d59";
+    break;
+    case "c":
+      document.body.style.backgroundColor="#1cbe4e59" ;
+      $('#cashed').prop('checked',true);
+      $("#statustext").html("CASHED");
+      $body.addClass("cashedStamp"); 
+      break;
+
+  default:
+    document.body.style.backgroundColor="#cfcece";
+    $("#statustext").html("Going....")
+    $('#printed').prop('checked',false); 
+$('#submited').prop('checked', false); 
+$('#cashed').prop('checked', false);
+   
+}}
  
     
