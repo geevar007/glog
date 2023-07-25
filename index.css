@@ -311,7 +311,7 @@ label{
    color:#045863;}
 .sticky{
     position: sticky;
-    top:0px;
+    top:-84px;
     z-index: 2;}
 .mBanner{
     background-image: url(Road.png);
@@ -438,11 +438,17 @@ img {
     color:white;}
 
     #statusRibbon{
-        display:flex;
-        justify-content: space-evenly;
-        width: 100%;
-        height:fit-content;
-        background: #b1b3b4;
+    display: flex;
+    justify-content: space-evenly;
+    height: fit-content;
+    background: rgb(153 161 165 / 89%);
+    align-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-bottom-right-radius: 10px; 
+    padding-left: 8px;
+    padding-right: 8px;
 
     }
     #cashed, #submited, #printed{
@@ -461,15 +467,16 @@ zoom:115%;
 
 }
 #statustext{
+    
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+    
     cursor: default;
     font-size: 13px;
 font-weight: bolder;
 }
 #statusIcon{
-
-
-    cursor: pointer;
-
+cursor: pointer;
 }
 .aDate {
     margin:2px;
@@ -510,4 +517,33 @@ background: url("cashed.png") no-repeat center center;
     width: 100%;
     z-index: 999999;
 }
+
+.sidenav {
+    
+   
+    position:absolute;
+    z-index: 1;
+    top: 90;
+    left: 0;
+  
+    overflow-x: hidden;
+    transition: 0.5s;
+
+  }
+  
+ 
+  
+  .sidenav .closebtn:hover {
+    color: #0b0b0b;
+  }
+  
+  .sidenav .closebtn {
+    font-size: 20px;
+  cursor: pointer;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
               
