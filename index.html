@@ -29,16 +29,16 @@
 
 <div ><!-----------------------------------------------------------nameless div for sticky working ------------------------------>
 <div class="sticky"><!------Sticked Div-------------->
-
+  
   <div class="divUserName"><p><b>Geevar kollanoor u</b> Lascar O/O Assistant Director Thrissur</p>
     <a onclick="gLogout()"> <i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
   </div>
    
-  <img id="titleImg" src="Title.png" alt="Travellog">
+  <img id="titleImg" src="Title.png" alt="Travellog "onclick="openNav()">
     
   <div class="mBanner">
-     
-      <div  id= "bannerYear"class="yearSelector"> 
+    
+      <div  id= "bannerYear"class="yearSelector">
          <h4 id="prev" title="Change Year-">«</h4> 
          <h4 id="yearSelect">2000</h4 >
            <h4 id="next" title="Change Year+">»</h4>
@@ -64,25 +64,36 @@
       <i href="#addItemModal" id = "maddItemBtn" data-toggle="modal" class="fa fa-pencil-square-o fa-2x" aria-hidden="true"title="New Entry"></i>
      <i  id="printRep" onclick="save()"class="fa fa-download fa-2x" aria-hidden="true" title="Print"></i>  
   </div>
-  <div id="statusRibbon"> <div class="iconCheckbox"><input type="checkbox" id="printed"  >  <i class="fa fa-file-pdf-o " aria-hidden="true"></i></div>
+</div><!------Sticked Div end ------->
+
+  
+<div id="mySidenav" class="sidenav">
+ 
+  
+  <div id="statusRibbon"> 
+    <i class="closebtn" onclick="closeNav()">&times;</i>
+    <div class="iconCheckbox"> <input type="checkbox" id="printed"  >  <i class="fa fa-file-pdf-o " aria-hidden="true"></i></div>
     
-    <div class="iconCheckbox" ><input type="checkbox" id="submited" >  <i class="fa fa-envelope-o " aria-hidden="true"></i></div>
+    <div class="iconCheckbox" > <input type="checkbox" id="submited" >  <i class="fa fa-envelope-o " aria-hidden="true"></i></div>
     <div class="iconCheckbox"><input type="checkbox" id="cashed"  >  <i class="fa fa-inr "></i></div>
     
-    
+    <p id= "statustext"style="color: white; margin-top: 7px;">html</p>
     <i  id="statusIcon"style="margin-top: 11px;" class="fa fa-paper-plane" onclick=statusupdate() aria-hidden="true"></i>
     <img id="busyGif" src="lod.gif" alt="" style="width: 25px; height: 25px; margin-top:6px;">
   <p  id="indexNo" hidden>index no</p>
-    <p id= "statustext"style="color: white; margin-top: 7px;">html</p>
-  
-  
+   
   </div>
   
-  
-  
   </div>
-  <div id="dateRibbon"><!--All Date in one ribbon--></div>
-  </div><!------Sticked Div end ------->
+
+
+
+
+
+  
+
+  <div  id="dateRibbon"><!--All Date in one ribbon--></div>
+ 
 
 <div><img id="noRImg"src="xx.png" alt="NO record" style="width: 100%; max-width: 346px; margin: auto;"></div>
     <div id="mobileViewArea"class="visible-xs">
