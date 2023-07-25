@@ -50,6 +50,7 @@ m++;
   
   month =$( "#monthSelect option:selected" ).text();
   year = $("#yearSelect").text();
+  closeNav()
   gRefresh();
 
     }
@@ -808,3 +809,10 @@ $('#cashed').prop('checked', false);
 }}
  
     
+function openNav() {
+  document.getElementById("mySidenav").style.width = "25px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
