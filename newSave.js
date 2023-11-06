@@ -27,7 +27,7 @@ $.each(jData, function (i, item) {
       var x= timeatoB.split(" to ");
       var timea= x[0];
       var timeb= x[1];
-
+if (item.date!=0){
     $(
       "<tr>"+
       
@@ -66,7 +66,7 @@ $.each(jData, function (i, item) {
         "<td colspan=7 Class=tSpace></td>"+
        "</tr>"
     
- ).appendTo('#printTable')})
+ ).appendTo('#printTable')}})
 $("#monthYear").html("for the month of  "+month+" "+year)
  $("#headding").html("Tour particulars of "+myName+" ("+desig+")"+", Office of"+hod+","+place);
 $("#place").html(place);
