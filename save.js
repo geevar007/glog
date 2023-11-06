@@ -21,7 +21,7 @@ var year = jData[0].year;
 $.each(jData, function (i, item) { 
       
       console.log("The I is= "+ ++i);
-
+if(item.date!=0){
     $(
       "<tr>"+
       
@@ -34,7 +34,7 @@ $.each(jData, function (i, item) {
       "<td>"+item.km+"</td>"+
       '<td >'+item.purpose+"</td>"+
       
-    "</tr>").appendTo('#printTable')})
+    "</tr>").appendTo('#printTable')}})
 $("#monthYear").html("for the month of  "+month+" "+year)
  $("#headding").html("Tour particulars of "+myName+" ("+desig+")"+", Office of"+hod+","+place);
 $("#place").html(place);
