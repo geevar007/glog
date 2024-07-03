@@ -1,49 +1,122 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyIRadio </title>
+    <link href="radio.ico" rel="shortcut icon">
+    <script src="https://radiosindia.com/playerjs5.js"></script>
+</head>
+<body>
+ 
+<div id="rFrame"> 
+        <div id="player"style="width:1px; height: 1px"></div>
+      
+        <div class="radioBody"> 
 
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>working radio</title>
-
-
-
-
-
-
-
-<body >
-	
-<div class="radio">
-
-<div class="radioBody"> 
-
-<button id="prB" onclick="preS()"> </button>
-<button id="pwrB" onclick="pwrOn()"> </button>
-<button id="nxB" onclick="nxtS()"> </button>
- <div id="lcdScreen">
-	
-<p id="lcdMessage"></p>
-
- </div>
-
-
-
-</div>
-
-<audio autoplay="none"id="myAudio" src="" 
-style="display:none"></audio>
-
-<p id="demo"></p>
-	
-	
-	
+            <button id="prB" onclick="switchUrl('-')"> </button>
+            <button id="pwrB" onclick="pwrOn()"> </button>
+            <button id="nxB" onclick="switchUrl('+')"> </button>
+             <div id="lcdScreen">
+                
+           
+            <marquee id="lcdMessage" height="20" direction="left">geevar</marquee>
+            
+             </div>
+            
+            
+            
+            </div>
+    
+        </div>   
 
 
-<style>
-@font-face {
+    
+
+
+
+        <script>
+          var scrollText= document.getElementById("lcdMessage");
+            
+            const stations = [
+            { name: "Hello Radio", url: "http://97.74.94.190:17101/helloradio.ogg" },
+            { name: "My Radio 90FM", url: "https://cast1.my-control-panel.com/proxy/myradio90fm/stream" },
+            { name: "Radio Mango", url: "https://bcovlive-a.akamaihd.net/19b535b7499a4719a5c19e043063f5d9/ap-southeast-1/6034685947001/playlist.m3u8"},
+            {name:"Air Trivandram", url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio101/playlist.m3u8"},
+            {name:"Station5", url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio229/playlist.m3u8"},
+            {name:"Club Fm 99.6", url:"https://sp14.instainternet.com/8050/stream"},
+            {name:"Radio Mirchi", url:"http://listen.openstream.co/4626/audio"},
+            {name:"Radio 90FM", url:"https://icecast.octosignals.com/radio90_final"},
+            {name:"Anandapuri FM101.9", url:" https://air.pc.cdn.bitgravity.com/air/live/pbaudio229/playlist.m3u8 or https://www.liveradio.es/http://59.90.28.91:88/broadwavehigh.mp3 or https://www.liveradio.es/http://59.90.28.91:88/broadwavehigh.mp3?src=1"},
+       {name:"Kochi FM",url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio045/playlist.m3u8"},
+       {name:"Kozhikode",url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio083/playlist.m3u8"},
+       {name:"Radio Kerala",url:"https://eu4.fastcast4u.com/proxy/radiokerala?mp=/1"},
+       {name:"Kannur",url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio173/playlist.m3u8"},
+       {name:"Manchery",url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio101/playlist.m3u8"},
+       {name:"Kochi FM2",url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio044/playlist.m3u8"},
+       {name:"Thrissur",url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio036/playlist.m3u8"},
+       {name:"Malabar86.9",url:"https://stream.zeno.fm/ornld7a3cymvv"},
+       {name:"Radio Mattoli",url:"https://cast1.my-control-panel.com/proxy/radiomattoli/stream"},
+       {name:"Aaha",url:"http://s2.radio.co/s3801784f1/listen"},
+       
+       
+        ];
+
+        
+
+    
+            // Track the current URL index
+            var currentIndex = 0;
+            scrollText.innerHTML=stations[currentIndex].name;
+            // Initialize the player with the first URL
+            var player = new Playerjs({
+                id: "player",
+                file:stations[currentIndex].url,
+                autoplay: "1",
+               
+            });
+    
+            // Function to switch to the next URL
+            function switchUrl(e) {
+              if(e =="+") {currentIndex = (currentIndex + 1) % stations.length }
+               else {currentIndex = (currentIndex - 1) % stations.length;}
+                player.api("play",stations[currentIndex].url);
+                console.log(stations[currentIndex].name);
+                scrollText.innerHTML=stations[currentIndex].name;
+            }
+    
+            function pwrOn(){
+
+                player.api("toggle");
+            }
+
+
+           
+            
+        </script>
+   <style>
+       @font-face {
    font-family: lcdfont;
    src: url(geevar.ttf);
 }
 
+#rFrame{
+    width:fit-content;
+margin: auto;
+
+
+}
+
+
+
+
+
+
+
+
 .radioBody{
+
 width:244px;
 height: 224px;
 background-image: url("Radio.png");
@@ -97,132 +170,25 @@ opacity: 0;
 #lcdScreen{
 	text-align: center;
 	position: relative;
-top:-7px;
+top:11px;
 left:56px;
 width:129px;
 	height:50px;
 	
 }
-#lcdScreen p{
+#lcdScreen{
 	
 	font-family: lcdfont;
 	color: #263C2B;
 	font-size: small;
 	line-height: 1.5;
 }
-               
-                
- 
-
-</style>
-	
-<script>
+    
 
 
-
-
-lcd = document.getElementById("lcdMessage")
-radio = document.getElementById("myAudio");
-pwrBtn= document.getElementById("pwrB");
-var radioStatus="off";
-setTimeout(console.log("woking",1000))
-const stations=["https://cast1.my-control-panel.com/proxy/myradio90fm/stream",
-"https://bcovlive-a.akamaihd.net/19b535b7499a4719a5c19e043063f5d9/ap-southeast-1/6034685947001/playlist.m3u8",
-				"https://air.pc.cdn.bitgravity.com/air/live/pbaudio101/playlist.m3u8",
-				"https://air.pc.cdn.bitgravity.com/air/live/pbaudio229/playlist.m3u8"]
-
-const stationNames=["My Radio 90 FM","FM:1","FM:2","FM:3","FM:4"]			
-sNo=0;
-
-function pwrOn(){
-if (radioStatus=="off"){
-
-pwrBtn.style.opacity ="0";
-RPlay(sNo);
-
-}
-
-else{lcd.innerHTML="Goodby..";
-radio.pause() ;
-radioStatus="off";
-pwrBtn.style.opacity ="1";
-switchOff(lcd);
-}
-
-
-
-}
-
-function nxtS(){
-	if (radioStatus!="off"){
-sNo++;
-RPlay(sNo);}
-
-
-}
-function preS(){
-	if (radioStatus!="off"){
-
-	sNo--;
-RPlay(sNo);}
-
-}
-
-function RPlay(x){
-radio.stop;
-radio.src=stations[x];
-radio.play() ;
-
-switchOn(lcd,stationNames[x]);
-
-
-
-
-}
-
-function switchOn(element,text){
-	
-
-clearInterval(id);
-var id = setInterval(changeOpacity,100);
-if(radioStatus=="off"){
-	element.innerHTML="Geevar Welcomes U";
-	radioStatus="on";
-	var y = 0;
-	element.style.opacity=y;
-}
-
-
-function changeOpacity(){
-	if( element.style.opacity ==1 ){ 
-		clearInterval(id);
-		setTimeout(setName,1500);
-	}
-else{
-	y= y+.1;
-	element.style.opacity=y;}
-	}
-function setName(){
-element.innerHTML=text;
-
-}
-}
-function switchOff(element){
-	var y = 1;
-	clearInterval(id);
-	var id = setInterval(changeOpacity,1000);
-	function changeOpacity(){
-	if( element.style.opacity ==0 ){ clearInterval(id);}
-else{
-	y= y-.1;
-	element.style.opacity=y;}
-	}
-
-}
-
-//var player = new Playerjs({id:"player", 
-//file:, autoplay:"0"})
-</script>
+   </style>
+    
 
 </body>
 </html>
+
