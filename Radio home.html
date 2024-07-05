@@ -13,7 +13,7 @@
 <div id="rFrame"> 
         <div id="player"style="width:1px; height: 1px"></div>
       
-        <div class="radioBody"> 
+        <div id="radioBody"> 
 
             <button id="prB" onclick="switchUrl('-')"> </button>
             <button id="pwrB" onclick="pwrOn()"> </button>
@@ -21,8 +21,10 @@
              <div id="lcdScreen">
                 
            
-            <marquee id="lcdMessage" height="20" direction="left">geevar</marquee>
+            <marquee id="lcdMessage" height="20" direction="left">********Sleep Mode*********</marquee>
             
+
+
              </div>
             
             
@@ -37,12 +39,14 @@
 
 
         <script>
+            var rBody= document.getElementById("radioBody")
           var scrollText= document.getElementById("lcdMessage");
             
-            const stations = [
+            const stationPool = [
+            { name: "Radio Mango", url: "https://bcovlive-a.akamaihd.net/19b535b7499a4719a5c19e043063f5d9/ap-southeast-1/6034685947001/playlist.m3u8"},
             { name: "Hello Radio", url: "http://97.74.94.190:17101/helloradio.ogg" },
             { name: "My Radio 90FM", url: "https://cast1.my-control-panel.com/proxy/myradio90fm/stream" },
-            { name: "Radio Mango", url: "https://bcovlive-a.akamaihd.net/19b535b7499a4719a5c19e043063f5d9/ap-southeast-1/6034685947001/playlist.m3u8"},
+           
             {name:"Air Trivandram", url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio101/playlist.m3u8"},
             {name:"Station5", url:"https://air.pc.cdn.bitgravity.com/air/live/pbaudio229/playlist.m3u8"},
             {name:"Club Fm 99.6", url:"https://sp14.instainternet.com/8050/stream"},
@@ -65,34 +69,63 @@
 
         
 
-    
-            // Track the current URL index
-            var currentIndex = 0;
-            scrollText.innerHTML=stations[currentIndex].name;
-            // Initialize the player with the first URL
-            var player = new Playerjs({
-                id: "player",
-                file:stations[currentIndex].url,
-                autoplay: "1",
-               
-            });
-    
-            // Function to switch to the next URL
-            function switchUrl(e) {
-              if(e =="+") {currentIndex = (currentIndex + 1) % stations.length }
-               else {currentIndex = (currentIndex - 1) % stations.length;}
-                player.api("play",stations[currentIndex].url);
-                console.log(stations[currentIndex].name);
-                scrollText.innerHTML=stations[currentIndex].name;
-            }
-    
-            function pwrOn(){
+        const stations = [];
 
-                player.api("toggle");
-            }
+const fetchPromises = stationPool.map(station =>
+  fetch(station.url, { method: 'HEAD' })
+    .then(response => {
+      if (response.ok) {
+        stations.push(station);
+      } else {
+        console.log(station.name + " not available! " + response.status);
+      }
+    })
+    .catch(error => {
+      console.log(station.name + " cache error " + error.message);
+    })
+);
+
+// Wait for all fetch requests to complete
+Promise.all(fetchPromises)
+  .then(() => {
+    // Track the current URL index
+    let currentIndex = 0;
+    
+    // Initialize the player with the first URL
+    var player = new Playerjs({
+      id: "player",
+      file: stations[currentIndex].url,
+      autoplay: "1",
+      
+    });
+    rBody.style.display = "block";
+    
+    // Function to switch to the next URL
+    window.switchUrl = function(e) {
+      if (e === "+") {
+        currentIndex = (currentIndex + 1) % stations.length;
+      } else {
+        currentIndex = (currentIndex - 1 + stations.length) % stations.length;
+      }
+      player.api("play", stations[currentIndex].url);
+      console.log(stations[currentIndex].name);
+      scrollText.innerHTML = "~^~^~^~^^^~^ Available Station_"+stations.length+" ^~^~^~^~^~^~^~^~^~^~^^ Now Playing ^~^ "+(currentIndex+1)+")"+stations[currentIndex].name+" ^~^~^~^~^~^~^~^~^~^~^^";
+    };
+    
+    // Function to toggle player on/off
+    window.pwrOn = function() {
+        scrollText.innerHTML = "~^~^~^~^^^~^ Available Station_"+stations.length+" ^~^~^~^~^~^~^~^~^~^~^^ Now Playing ^~^ "+(currentIndex+1)+")"+stations[currentIndex].name+" ^~^~^~^~^~^~^~^~^~^~^^";
+      player.api("toggle");
+    };
+  });
 
 
-           
+
+
+
+
+
+
             
         </script>
    <style>
@@ -115,8 +148,8 @@ margin: auto;
 
 
 
-.radioBody{
-
+#radioBody{
+display: none;
 width:244px;
 height: 224px;
 background-image: url("Radio.png");
