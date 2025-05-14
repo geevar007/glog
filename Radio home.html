@@ -114,7 +114,7 @@ Promise.all(fetchPromises)
     
     // Function to toggle player on/off
     window.pwrOn = function() {
-        scrollText.innerHTML = "~^~^~^~^^^~^ Available Station_"+stations.length+" ^~^~^~^~^~^~^~^~^~^~^^ Now Playing ^~^ "+(currentIndex+1)+")"+stations[currentIndex].name+" ^~^~^~^~^~^~^~^~^~^~^^";
+        scrollText.innerHTML = stations.length+"/"+(currentIndex+1)+"~"+stations[currentIndex].name;
       player.api("toggle");
     };
   });
