@@ -109,7 +109,7 @@ Promise.all(fetchPromises)
       }
       player.api("play", stations[currentIndex].url);
       console.log(stations[currentIndex].name);
-      scrollText.innerHTML = "~^~^~^~^^^~^ Available Station_"+stations.length+" ^~^~^~^~^~^~^~^~^~^~^^ Now Playing ^~^ "+(currentIndex+1)+")"+stations[currentIndex].name+" ^~^~^~^~^~^~^~^~^~^~^^";
+      scrollText.innerHTML = "Available Station_"+stations.length+"~Now Playing:~"+(currentIndex+1)+"~"+stations[currentIndex].name;
     };
     
     // Function to toggle player on/off
