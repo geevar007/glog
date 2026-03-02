@@ -535,7 +535,7 @@ $("#toI").click(function(){
   $('#to').val("Thrissur HQ");});
 //--------------------------------------------------------------
   $("#purI").click(function(){
-    $('#purpose').val("Assisting SSO for NSMP field survey and sample collection");});
+    $('#purpose').val("Assisting SSO for NSMP field survey and soil sample collection");});
 //-----------------------------------------------------------------
    
    
@@ -816,4 +816,5 @@ function openNav() {
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
+
 
