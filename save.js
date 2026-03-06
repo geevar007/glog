@@ -40,6 +40,54 @@ $("#monthYear").html("for the month of  "+month+" "+year)
 $("#place").html(place);
 $("#fName").html(myName);
 $("#fDesig").html(desig);
- 
+
+
+function exportExcel(){
+
+let data = oData
+let rows = [];
+
+data.items.forEach(item => {
+
+rows.push([
+item.date + "." + MM + "." + item.year + "  " + item.timea, // Column 1
+item.from,                           // Column 2
+item.to + " & back",                   // Column 3
+item.km,                             // Column 4
+item.mode,                           // Column 5
+"", "", "", "", "", "","",  // Empty columns
+item.purpose                         // Last column
+]);
+
+});
+
+let ws = XLSX.utils.aoa_to_sheet(rows);
+
+/* column widths similar to table */
+ws["!cols"] = [
+{wch:22},
+{wch:14},
+{wch:40},
+{wch:5},
+{wch:10},
+{wch:5},
+{wch:5},
+{wch:5},
+{wch:5},
+{wch:5},
+{wch:5},
+{wch:5},
+{wch:50}
+];
+
+let wb = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(wb, ws, "February");
+
+XLSX.writeFile(wb, "TA Geevar " + month + " " + year + ".xlsx");
+
+}
+
+
 function nSave(){
       window.location.href = "newSave.html" +"?"+year+month;}
+
