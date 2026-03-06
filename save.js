@@ -43,12 +43,10 @@ $("#fDesig").html(desig);
 
 
 function exportExcel(){
-
-let data = oData
 let rows = [];
 
-data.items.forEach(item => {
-
+oData.items.forEach(item => {
+if(item.date!=0){
 rows.push([
 item.date + "." + MM + "." + item.year + "  " + item.timea, // Column 1
 item.from,                           // Column 2
@@ -57,9 +55,7 @@ item.km,                             // Column 4
 item.mode,                           // Column 5
 "", "", "", "", "", "","",  // Empty columns
 item.purpose                         // Last column
-]);
-
-});
+])}});
 
 let ws = XLSX.utils.aoa_to_sheet(rows);
 
@@ -81,13 +77,12 @@ ws["!cols"] = [
 ];
 
 let wb = XLSX.utils.book_new();
-XLSX.utils.book_append_sheet(wb, ws, "February");
-
+XLSX.utils.book_append_sheet(wb, ws, month);
 XLSX.writeFile(wb, "TA Geevar " + month + " " + year + ".xlsx");
-
 }
 
 
 function nSave(){
       window.location.href = "newSave.html" +"?"+year+month;}
+
 
