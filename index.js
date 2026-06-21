@@ -1,11 +1,13 @@
 var url = "https://script.google.com/macros/s/AKfycbzIukcrWtqF8AadmIkce4IchaeSyvcep18qZhjHFPOE6MHgLSo/exec";
-
+const purposess= "https://docs.google.com/spreadsheets/d/1LLbt9ULlOwlZ0i2CcYZ1tClzX1qZO2lpoa_fDhHu-dI/export?format=csv&gid=0";
 var months = ['x',
     'January', 'February', 'March', 'April', 'May',
     'June', 'July', 'August', 'September',
     'October', 'November', 'December'
     ];
     var places=[];
+
+    const select = document.getElementById("cities");
 
     if (localStorage.getItem("place")){
       var arr = JSON.parse(localStorage.getItem("place"));
@@ -43,6 +45,7 @@ m++;
  //-----------------------------------------------------------------document ready-------------------------
   $(document).ready(function(){  
     
+    fetchPurpose();
     if(localStorage.getItem("token")){
 
       document.getElementById("printRep").style.display="none";
@@ -534,8 +537,17 @@ $('#from').val("Thrissur HQ");});
 $("#toI").click(function(){
   $('#to').val("Thrissur HQ");});
 //--------------------------------------------------------------
-  $("#purI").click(function(){
-    $('#purpose').val("Assisting SSO for NSMP field survey and soil sample collection");});
+  $("#purI").click(function () {
+    if ($('#purpose').val() === "") {
+
+      
+        // Select first option
+       $("#purpose").val($("#cities option:first").val());
+    } else {
+        // Clear current value
+        $('#purpose').val("");
+    }
+});
 //-----------------------------------------------------------------
    
    
@@ -818,3 +830,15 @@ function closeNav() {
 }
 
 
+async function fetchPurpose() {
+  const csv = await (await fetch(purposess)).text();
+
+  const rows = csv
+    .trim()
+    .split("\n")
+    .map(r => r.replace(/\r/g, "").split(","));
+
+  select.innerHTML = rows.map((row, i) =>
+    `<option value="${row[0]}" ${i === 0 ? "selected" : ""}>${row[0]}</option>`
+  ).join("");
+}
