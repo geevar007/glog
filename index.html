@@ -278,8 +278,8 @@
               <label  for="purpose">Purpose</label><i id="purI"class="fa fa-paw" aria-hidden="true"></i>
 
               <input list="impdPurpes" id="purpose" name="impdPurpes" placeholder="Type or select"  class="form-control">
-              <datalist id="impdPurpes">
-         
+              
+         <datalist id="impdPurpes"></datalist>
   
             </div>
 
@@ -293,7 +293,9 @@
           
           
           <div class="modal-footer">
-            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="button" class="btn btn-default"  value="copy" id="copy_Btn">
+           
             <input type="submit" id ="btn_add_item" class="btn btn-success" value="Add">
           </div>
         </form>
