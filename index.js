@@ -7,7 +7,7 @@ var months = ['x',
     ];
     var places=[];
 
-    const select = document.getElementById("cities");
+    const select = document.getElementById("impdPurpes");
 
     if (localStorage.getItem("place")){
       var arr = JSON.parse(localStorage.getItem("place"));
@@ -542,7 +542,7 @@ $("#toI").click(function(){
 
       
         // Select first option
-       $("#purpose").val($("#cities option:first").val());
+       $("#purpose").val($("#impdPurpes option:first").val());
     } else {
         // Clear current value
         $('#purpose').val("");
@@ -833,12 +833,14 @@ function closeNav() {
 async function fetchPurpose() {
   const csv = await (await fetch(purposess)).text();
 
+  
   const rows = csv
     .trim()
     .split("\n")
     .map(r => r.replace(/\r/g, "").split(","));
+    
 
-  select.innerHTML = rows.map((row, i) =>
-    `<option value="${row[0]}" ${i === 0 ? "selected" : ""}>${row[0]}</option>`
-  ).join("");
+  select.innerHTML = rows.map((row,i) =>
+  `<option value="${row[0]}"></option>`
+).join("");
 }
