@@ -20,14 +20,13 @@ var dd=gx.getDate();
 
 var YearMonth=localStorage.getItem("seldD");
 var myArray = YearMonth.split("-");
-console.log("year= "+myArray[0] );
-console.log("month= "+myArray[1] );
+
 var nOM= months.indexOf(myArray[1])-1;
-console.log("recovered  m is "+nOM);
+
 
 var m = nOM;
 var y= myArray[0];
-console.log("number of month is "+m);
+
 
 }
 else {
@@ -80,7 +79,7 @@ function gRefresh(){
   
     
     if(localStorage.getItem(year+month)){
-      console.log(month+year+" Data in local memory");
+     
       var gPassD = JSON.parse(localStorage.getItem(year+month));
      setTimeout(function() {
         drawTables(gPassD); 
@@ -115,7 +114,7 @@ function gRefresh(){
 
 //-----------------------------------------------------------draw Tables function--------------------
     function drawTables(data) { 
-      console.log("selected month updated "+year+month);
+     
       localStorage.removeItem("seldD");
      if(data.tableEmpty == 'N'){  
       document.getElementById("printRep").style.display="block";
@@ -125,7 +124,7 @@ function gRefresh(){
      
        if(response[0].date!=0){if (confirm("No index! is creat it ? ")) {createGindex();} 
                                                           
-                                                            else {console.log( "You pressed Cancel!")}}
+                                                            else { }}
       
         else {var statusArry= response.splice(0, 1);readStatus(statusArry[0]);}
        
@@ -194,7 +193,7 @@ function gRefresh(){
   }
    else{
     // dates=[];
-    console.log("no data for selected month "+month);
+    
   document.getElementById("printRep").style.display="none";
     document.getElementById("itemTable").style.display="none";
     document.getElementById("noRImg").style.display="block"; 
@@ -531,23 +530,40 @@ $("#monthSelect").change(function(){
 
 //---------------------------------------------------------------  
 
-$("#fromI").click(function(){
-$('#from').val("Thrissur HQ");});
-//--------------------------------------------------------------
-$("#toI").click(function(){
-  $('#to').val("Thrissur HQ");});
-//--------------------------------------------------------------
-  $("#purI").click(function () {
-    if ($('#purpose').val() === "") {
-
-      
-        // Select first option
-       $("#purpose").val($("#impdPurpes option:first").val());
-    } else {
-        // Clear current value
-        $('#purpose').val("");
-    }
+$("#fromI").click(function () {
+    wipeOrWrite('#from');
 });
+
+$("#toI").click(function () {
+    wipeOrWrite('#to');
+});
+
+
+function wipeOrWrite(area){
+    $(area).val($(area).val() === "" ? "Thrissur HQ" : "");
+}
+//--------------------------------------------------------------
+ $("#purI").click(function () {
+    $('#purpose').val(
+        $('#purpose').val() === "" 
+        ? $("#impdPurpes option:first").val() 
+        : ""
+    );
+});
+
+$("#copy_Btn").click(function(){
+
+ navigator.clipboard.writeText($('#purpose').val() +" at "+ $('#to').val());
+
+
+
+
+
+
+})
+
+
+
 //-----------------------------------------------------------------
    
    
@@ -575,7 +591,7 @@ function readKey(){
  //-------------------------------------Reading key- function End---------------------
  function check(data)
  {if(data!="Call Geevar"){
-  console.log( "data is"+data);
+ 
   localStorage.removeItem(year+month);
   gRefresh();}}
 
@@ -606,7 +622,7 @@ function readKey(){
         /*close any already open lists of autocompleted values*/
         closeAllLists();
        
-  console.log("auto complete is running  received array is "+ arr);
+  
   
   
         if (!val) { return false }
@@ -782,7 +798,7 @@ var from="x"
 
 
 $("#statustext").html(from)
-console.log("statusupdate");
+
 
    }
 
