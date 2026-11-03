@@ -6,6 +6,7 @@ var months = ['x',
     'October', 'November', 'December'
     ];
     var places=[];
+    var  fieldDays;
 
     const select = document.getElementById("impdPurpes");
 
@@ -115,6 +116,7 @@ function gRefresh(){
 //-----------------------------------------------------------draw Tables function--------------------
     function drawTables(data) { 
      
+      var exDates=[]
       localStorage.removeItem("seldD");
      if(data.tableEmpty == 'N'){  
       document.getElementById("printRep").style.display="block";
@@ -131,7 +133,7 @@ function gRefresh(){
        $.each(response, function (i, item) { 
           
           places.push(item.to);
-          
+          exDates.push(item.date);
               $(
                 "<tr>"+
                 "<td>"+item.no+"</td>"+
@@ -188,7 +190,7 @@ function gRefresh(){
     localStorage.setItem("place", test);
    
     
-   
+   fieldDays = (JSON.stringify(exDates));
   
   }
    else{
@@ -859,4 +861,13 @@ async function fetchPurpose() {
   select.innerHTML = rows.map((row,i) =>
   `<option value="${row[0]}"></option>`
 ).join("");
+}
+function openSubmissionPage(){
+
+
+window.location.href = "https://geevar007.github.io/soil" + "?"+  fieldDays ;
+
+
+
+
 }
