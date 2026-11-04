@@ -865,7 +865,7 @@ async function fetchPurpose() {
 function openSubmissionPage(){
 
 
-window.location.href = "https://geevar007.github.io/soil" + "?"+ fieldDays ;
+window.open("https://geevar007.github.io/soil?" + fieldDays, "_blank");
 
 
 
