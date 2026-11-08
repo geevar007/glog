@@ -865,7 +865,7 @@ async function fetchPurpose() {
 function openSubmissionPage(){
 
 
-window.open("https://geevar007.github.io/soil?" + fieldDays, "_blank");
+window.open("https://geevar007.github.io/soil?data="+fieldDays+"&month="+month+"&year="+year, "_blank");
 
 
 
